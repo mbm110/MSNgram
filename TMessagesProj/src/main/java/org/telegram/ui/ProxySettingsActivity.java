@@ -42,6 +42,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
 import org.telegram.messenger.AndroidUtilities;
@@ -52,8 +53,8 @@ import org.telegram.messenger.R;
 import org.telegram.messenger.SharedConfig;
 import org.telegram.messenger.SvgHelper;
 import org.telegram.messenger.Utilities;
-import org.telegram.utils.proxy.WebProxyTransport;
-import org.telegram.utils.proxy.ProxySettings;
+import org.telegram.proxy.WebProxyTransport;
+import org.telegram.proxy.ProxySettings;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
@@ -167,7 +168,7 @@ public class ProxySettingsActivity extends BaseFragment {
 
     public ProxySettingsActivity() {
         super();
-        currentProxyInfo = new SharedConfig.ProxyInfo("", 1080, "", "", "");
+        currentProxyInfo = new SharedConfig.ProxyInfo(ProxySettings.EMPTY);
         addingNewProxy = true;
     }
 
@@ -210,19 +211,19 @@ public class ProxySettingsActivity extends BaseFragment {
                     if (getParentActivity() == null) {
                         return;
                     }
-                    ProxySettings settings = ProxySettings.builder()
-                            .setType(currentType)
-                            .setAddress(inputFields[FIELD_IP].getText().toString())
-                            .setPort(currentType == ProxySettings.Type.WEB ? 0 : Utilities.parseInt(inputFields[FIELD_PORT].getText().toString()))
-                            .setUser(inputFields[FIELD_USER].getText().toString())
-                            .setPassword(inputFields[FIELD_PASSWORD].getText().toString())
-                            .setSecret(inputFields[FIELD_SECRET].getText().toString())
-                            .build();
-                    currentProxyInfo.address = settings.getAddress();
-                    currentProxyInfo.port = settings.getPort();
-                    currentProxyInfo.username = settings.getUser();
-                    currentProxyInfo.password = settings.getPassword();
-                    currentProxyInfo.secret = settings.getSecret();
+
+                    currentProxyInfo.settings = ProxySettings.builder()
+                        .setType(currentType)
+                        .setAddress(currentType == ProxySettings.Type.WEB
+                                ? WebProxyTransport.normalizeHost(inputFields[FIELD_IP].getText().toString())
+                                : inputFields[FIELD_IP].getText().toString())
+                        .setPort(currentType == ProxySettings.Type.WEB
+                                ? 443
+                                : Utilities.parseInt(inputFields[FIELD_PORT].getText().toString()))
+                        .setUser(currentType == ProxySettings.Type.SOCKS5 ? inputFields[FIELD_USER].getText().toString() : "")
+                        .setPassword(currentType == ProxySettings.Type.SOCKS5 ? inputFields[FIELD_PASSWORD].getText().toString() : "")
+                        .setSecret(currentType != ProxySettings.Type.SOCKS5 ? inputFields[FIELD_SECRET].getText().toString() : "")
+                        .build();
 
                     SharedPreferences preferences = MessagesController.getGlobalMainSettings();
                     SharedPreferences.Editor editor = preferences.edit();
@@ -237,12 +238,8 @@ public class ProxySettingsActivity extends BaseFragment {
                         SharedConfig.saveProxyList();
                     }
                     if (addingNewProxy || SharedConfig.currentProxy == currentProxyInfo) {
-                        editor.putString("proxy_ip", currentProxyInfo.address);
-                        editor.putString("proxy_pass", currentProxyInfo.password);
-                        editor.putString("proxy_user", currentProxyInfo.username);
-                        editor.putInt("proxy_port", currentProxyInfo.port);
-                        editor.putString("proxy_secret", currentProxyInfo.secret);
-                        ConnectionsManager.setProxySettings(enabled, currentProxyInfo.address, currentProxyInfo.port, currentProxyInfo.username, currentProxyInfo.password, currentProxyInfo.secret);
+                        currentProxyInfo.settings.toSharedPreferences(editor);
+                        ConnectionsManager.setProxySettings(enabled, currentProxyInfo.settings);
                     }
                     editor.commit();
 
@@ -260,14 +257,27 @@ public class ProxySettingsActivity extends BaseFragment {
         FrameLayout frameLayout = (FrameLayout) fragmentView;
         fragmentView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
 
-//        linearLayout2 = new SectionsScrollView.SectionsLinearLayout(context);
-//        scrollView = new SectionsScrollView(context, linearLayout2, resourceProvider);
-        scrollView = new ScrollView(context);
+        linearLayout2 = new SectionsScrollView.SectionsLinearLayout(context) {
+            @Override
+            protected void dispatchDraw(@NonNull Canvas canvas) {
+                // todo: update to recyclerview
+                super.dispatchDraw(canvas);
+                invalidate();
+            }
+        };
+        SectionsScrollView sectionsScrollView;
+        scrollView = sectionsScrollView = new SectionsScrollView(context, linearLayout2, resourceProvider) {
+            @Override
+            protected void dispatchDraw(@NonNull Canvas canvas) {
+                super.dispatchDraw(canvas);
+                invalidate();
+            }
+        };
+        actionBar.setAdaptiveBackground(sectionsScrollView);
         scrollView.setFillViewport(true);
         AndroidUtilities.setScrollViewEdgeEffectColor(scrollView, Theme.getColor(Theme.key_actionBarDefault));
         frameLayout.addView(scrollView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
-        linearLayout2 = new LinearLayout(context);
         linearLayout2.setOrientation(LinearLayout.VERTICAL);
         scrollView.addView(linearLayout2, new ScrollView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
@@ -295,12 +305,12 @@ public class ProxySettingsActivity extends BaseFragment {
 
         inputFieldsContainer = new LinearLayout(context);
         inputFieldsContainer.setOrientation(LinearLayout.VERTICAL);
-        inputFieldsContainer.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            // bring to front for transitions
-            inputFieldsContainer.setElevation(AndroidUtilities.dp(1f));
-            inputFieldsContainer.setOutlineProvider(null);
-        }
+         // inputFieldsContainer.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+
+
+        // bring to front for transitions
+        inputFieldsContainer.setElevation(AndroidUtilities.dp(1f));
+        inputFieldsContainer.setOutlineProvider(null);
         linearLayout2.addView(inputFieldsContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         inputFields = new EditTextBoldCursor[5];
@@ -417,23 +427,23 @@ public class ProxySettingsActivity extends BaseFragment {
             switch (a) {
                 case FIELD_IP:
                     inputFields[a].setHintText(LocaleController.getString(R.string.UseProxyAddress));
-                    inputFields[a].setText(currentProxyInfo.address);
+                    inputFields[a].setText(currentProxyInfo.settings.getAddress());
                     break;
                 case FIELD_PASSWORD:
                     inputFields[a].setHintText(LocaleController.getString(R.string.UseProxyPassword));
-                    inputFields[a].setText(currentProxyInfo.password);
+                    inputFields[a].setText(currentProxyInfo.settings.getPassword());
                     break;
                 case FIELD_PORT:
                     inputFields[a].setHintText(LocaleController.getString(R.string.UseProxyPort));
-                    inputFields[a].setText("" + currentProxyInfo.port);
+                    inputFields[a].setText(Integer.toString(currentProxyInfo.settings.getPort()));
                     break;
                 case FIELD_USER:
                     inputFields[a].setHintText(LocaleController.getString(R.string.UseProxyUsername));
-                    inputFields[a].setText(currentProxyInfo.username);
+                    inputFields[a].setText(currentProxyInfo.settings.getUser());
                     break;
                 case FIELD_SECRET:
                     inputFields[a].setHintText(LocaleController.getString(R.string.UseProxySecret));
-                    inputFields[a].setText(currentProxyInfo.secret);
+                    inputFields[a].setText(currentProxyInfo.settings.getSecret());
                     break;
             }
             inputFields[a].setSelection(inputFields[a].length());
@@ -459,7 +469,6 @@ public class ProxySettingsActivity extends BaseFragment {
 
         for (int i = 0; i < 2; i++) {
             bottomCells[i] = new TextInfoPrivacyCell(context);
-            bottomCells[i].setBackground(Theme.getThemedDrawableByKey(context, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
             if (i == 0) {
                 bottomCells[i].setText(LocaleController.getString(R.string.UseProxyInfo));
             } else {
@@ -535,7 +544,6 @@ public class ProxySettingsActivity extends BaseFragment {
         linearLayout2.addView(pasteCell, 0, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         pasteCell.setVisibility(View.GONE);
         sectionCell[2] = new ShadowSectionCell(fragmentView.getContext());
-        sectionCell[2].setBackground(Theme.getThemedDrawableByKey(fragmentView.getContext(), R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
         linearLayout2.addView(sectionCell[2], 1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         sectionCell[2].setVisibility(View.GONE);
 
@@ -603,7 +611,6 @@ public class ProxySettingsActivity extends BaseFragment {
         });
 
         sectionCell[1] = new ShadowSectionCell(context);
-        sectionCell[1].setBackgroundDrawable(Theme.getThemedDrawableByKey(context, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
         linearLayout2.addView(sectionCell[1], LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
@@ -613,7 +620,7 @@ public class ProxySettingsActivity extends BaseFragment {
         checkShareDone(false);
 
         currentType = null;
-        setProxyType(currentProxyInfo.toSettings().getType(), false);
+        setProxyType(currentProxyInfo.settings.getType(), false);
 
         pasteProxySettings = null;
         pasteString = null;
@@ -718,7 +725,7 @@ public class ProxySettingsActivity extends BaseFragment {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 TransitionManager.endTransitions(linearLayout2);
             }
-            if (animated && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (animated) {
                 final TransitionSet transitionSet = new TransitionSet()
                         .addTransition(new Fade(Fade.OUT))
                         .addTransition(new ChangeBounds())

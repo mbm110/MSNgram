@@ -348,11 +348,16 @@ public class VoIPPreNotificationService { // } extends Service implements AudioM
                     } else if (vibrate == 3) {
                         duration *= 2;
                     }
-                    AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                            .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
-                            .build();
-                    vibrator.vibrate(new long[]{0, duration, 500}, 0, audioAttributes);
+                    long[] pattern = new long[]{0, duration, 500};
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        vibrator.vibrate(
+                                VibrationEffect.createWaveform(pattern, 0),
+                                new VibrationAttributes.Builder()
+                                    .setUsage(VibrationAttributes.USAGE_RINGTONE) // required for background apps
+                                    .build());
+                    } else {
+                        vibrator.vibrate(pattern, 0);
+                    }
                 }
             }
         }

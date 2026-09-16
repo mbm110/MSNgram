@@ -5,7 +5,8 @@ plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
-    id 'org.telegram.lottie-meta'
+    id 'org.telegram.build-plugin'
+    id 'org.telegram.build-app-plugin'
     id 'idea'
 }
 
@@ -296,4 +297,13 @@ dependencies {
     implementation 'app.nekogram.translator:translator:1.6.1'
 
     compileOnly fileTree('libs')
+}
+
+dependencies {
+    implementation project(":TMessagesProj_Modules:media3:media-lib-exoplayer")
+    implementation project(":TMessagesProj_Modules:media3:media-lib-exoplayer-dash")
+    implementation project(":TMessagesProj_Modules:media3:media-lib-exoplayer-hls")
+    implementation project(":TMessagesProj_Modules:media3:media-lib-decoder-ffmpeg")
+    implementation project(":TMessagesProj_Modules:media3:media-lib-session")
+    implementation project(":jlatexmath")
 }

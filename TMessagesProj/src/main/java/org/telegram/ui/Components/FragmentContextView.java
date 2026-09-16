@@ -59,7 +59,6 @@ import androidx.core.math.MathUtils;
 
 //import com.google.android.gms.vision.Frame;
 import androidx.annotation.NonNull;
-import androidx.core.graphics.ColorUtils;
 
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
@@ -565,7 +564,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
         avatars.setVisibility(GONE);
         addView(avatars, LayoutHelper.createFrame(108, 36, Gravity.LEFT | Gravity.TOP));
 
-        muteDrawable = new RLottieDrawable(R.raw.voice_muted, "" + R.raw.voice_muted, dp(16), dp(20), true, null);
+        muteDrawable = new RLottieDrawable(R.raw.voice_muted, dp(16), dp(20), true, null);
 
         muteButton = new RLottieImageView(context) {
             boolean scheduled;

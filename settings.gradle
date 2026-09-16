@@ -12,7 +12,7 @@ pluginManagement {
     }
 }
 plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+    // CI supplies the configured JDK; do not download toolchains.
 }
 
 dependencyResolutionManagement {
@@ -25,3 +25,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "MSNgram"
 include ':TMessagesProj'
+
+include ":jlatexmath"
+project(":jlatexmath").projectDir = file("TMessagesProj/lib/jlatexmath/jlatexmath")
+gradle.ext.androidxMediaModulePrefix = "TMessagesProj_Modules:media3:media-"
+apply from: file("TMessagesProj_Modules/media/core_settings.gradle")
