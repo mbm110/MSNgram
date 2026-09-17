@@ -197,3 +197,4 @@
 -keepattributes *Annotation*
 -dontoptimize
 -dontobfuscate
+-keep class org.telegram.tgnet.** { *; }
