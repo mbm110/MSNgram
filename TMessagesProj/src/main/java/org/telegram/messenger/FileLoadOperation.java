@@ -826,6 +826,24 @@ public class FileLoadOperation {
         return start(stream, streamOffset, streamPriority);
     }
 
+    // Snapshot the policy for this operation, including its connection pool.
+    // Streams use it too, like TDLib, which shares one downloader between streaming and downloads.
+    private void updateDownloadByteBudget() {
+        useDownloadByteBudget = !MessagesController.getInstance(currentAccount).downloadImprovementKillswitch &&
+                totalBytesCount > 0 && key == null && !encryptFile && !isPreloadVideoOperation && preloadPrefixSize == 0;
+        if (useDownloadByteBudget) {
+            boolean premium = UserConfig.getInstance(currentAccount).isPremium();
+            downloadConnectionsCount = premium ? ConnectionsManager.DownloadConnectionsCount : 2;
+            int byteBudget = (premium ? 16 : 2) * 1024 * 1024;
+            currentMaxDownloadRequests = byteBudget / currentDownloadChunkSize;
+        }
+    }
+
+    // Same branch of start() that picks the regular chunk size.
+    private boolean canUseDownloadByteBudget() {
+        return currentDownloadChunkSize != 0 && !forceSmallChunk && !isStory && !isStream;
+    }
+
     public boolean start(final FileLoadOperationStream stream, final long streamOffset, final boolean streamPriority) {
         startTime = System.currentTimeMillis();
         updateParams();
@@ -1313,6 +1331,9 @@ public class FileLoadOperation {
         if (!value && isPreloadVideoOperation) {
             if (state == stateFinished) {
                 isPreloadVideoOperation = value;
+                if (canUseDownloadByteBudget()) {
+                    updateDownloadByteBudget();
+                }
                 state = stateIdle;
                 preloadFinished = false;
                 start();
@@ -1321,6 +1342,9 @@ public class FileLoadOperation {
                     requestedBytesCount = 0;
                     clearOperation(null, true, true);
                     isPreloadVideoOperation = value;
+                    if (canUseDownloadByteBudget()) {
+                        updateDownloadByteBudget();
+                    }
                     startDownloadRequest(-1);
                 });
             } else {
