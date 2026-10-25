@@ -3887,7 +3887,7 @@ public class ChatActivity extends BaseFragment implements
             }
             return chatActivity == null || !(selectedView != null && selectedView.getMessageObject() != null && selectedView.getMessageObject().messageOwner != null);
             /*return chatActivity == null || !(
-                chatActivity.getDialogId() < 0 && chatActivity.getMessagesController().isPeerNoForwards(chatActivity.getDialogId()) ||
+                !DialogObject.isEncryptedDialog(chatActivity.getDialogId()) && chatActivity.isPeerNoForwards() ||
                 selectedView != null && selectedView.getMessageObject() != null && (selectedView.getMessageObject().messageOwner != null && selectedView.getMessageObject().messageOwner.noforwards)
             );*/
         }
