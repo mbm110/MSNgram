@@ -42,7 +42,7 @@ public class NotificationsService extends Service {
 //                    .setContentIntent(explainPendingIntent)
                     .setShowWhen(false)
                     .setOngoing(true)
-                    .setSmallIcon(R.drawable.neko_notification)
+                    .setSmallIcon(R.drawable.msngram_notification)
                     .setContentText(LocaleController.getString(R.string.MSNgramPushService))
                     .build();
             try {
