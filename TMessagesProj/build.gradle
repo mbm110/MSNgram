@@ -24,7 +24,7 @@ idea {
 def buildTimestamp = System.getenv('BUILD_TIMESTAMP') ?: '0'
 def commitId = System.getenv('COMMIT_ID')
 def verName = "${APP_VERSION_NAME}${commitId?.take(7) ? "-${commitId.take(7)}" : ''}"
-def verCode = 1261
+def verCode = 1262
 
 def officialVer = APP_VERSION_NAME
 def officialCode = APP_VERSION_CODE
@@ -155,7 +155,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile project.file('release.keystore')
+            storeFile project.file(System.getenv('WEBPROXY_KEYSTORE_FILE') ?: 'release.keystore')
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
             storePassword keystorePwd
             keyAlias alias
             keyPassword pwd
