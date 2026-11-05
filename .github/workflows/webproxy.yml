@@ -42,6 +42,7 @@ jobs:
           KEYSTORE_B64: ${{ secrets.WEBPROXY_KEYSTORE_BASE64 }}
         run: |
           test -n "$KEYSTORE_B64"
+          echo "sdk.dir=${ANDROID_HOME}" >> local.properties
           printf '%s' "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/webproxy-release.p12"
           chmod 600 "$RUNNER_TEMP/webproxy-release.p12"
           python3 - <<'PY'
@@ -58,6 +59,7 @@ jobs:
           KEYSTORE_PASS: ${{ secrets.WEBPROXY_KEYSTORE_PASSWORD }}
           ALIAS_PASS: ${{ secrets.WEBPROXY_KEYSTORE_PASSWORD }}
           ALIAS_NAME: ${{ secrets.WEBPROXY_KEY_ALIAS }}
+          LOCAL_PROPERTIES: ''
         run: ./gradlew TMessagesProj:assembleRelease --stacktrace
       - name: Verify and stage release APK
         env:
