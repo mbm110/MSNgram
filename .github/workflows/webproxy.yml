@@ -1,4 +1,4 @@
-name: MSNgram Release APKs
+name: Web Proxy APK
 
 on:
   workflow_dispatch:
@@ -8,21 +8,13 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: msngram-build-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        abi: [armeabi-v7a, arm64-v8a]
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      NATIVE_TARGET: ${{ matrix.abi }}
-      BUILD_TIMESTAMP: '0'
+      NATIVE_TARGET: arm64-v8a
+      DEBUG_BUILD: 'true'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,85 +27,21 @@ jobs:
       - uses: android-actions/setup-android@v3
         with:
           packages: 'build-tools;36.0.0 ndk;27.2.12479018 platforms;android-37.0'
-      - name: Install native dependencies
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends --yes nasm
-      - name: Configure release build
-        env:
-          KEYSTORE_B64: ${{ secrets.WEBPROXY_KEYSTORE_BASE64 }}
+      - name: Configure debug build
         run: |
-          test -n "$KEYSTORE_B64"
-          echo "sdk.dir=${ANDROID_HOME}" >> local.properties
-          printf '%s' "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/webproxy-release.p12"
-          chmod 600 "$RUNNER_TEMP/webproxy-release.p12"
           python3 - <<'PY'
           from pathlib import Path
-          import os
-          Path('local.properties').write_text('sdk.dir=' + os.environ['ANDROID_HOME'] + '\n')
+          Path('local.properties').write_text('sdk.dir=' + __import__('os').environ['ANDROID_HOME'] + '\n')
+          p = Path('TMessagesProj/build.gradle')
+          p.write_text(p.read_text().replace('signingConfig = signingConfigs.release', 'signingConfig = signingConfigs.debug'))
           p = Path('gradle.properties')
           lines = [s for s in p.read_text().splitlines() if not s.startswith('org.gradle.jvmargs=')]
           p.write_text('\n'.join(lines) + '\norg.gradle.jvmargs=-Xmx6G -XX:MaxMetaspaceSize=2G -Dfile.encoding=UTF-8\n')
           PY
-      - name: Build signed release APK
-        env:
-          WEBPROXY_KEYSTORE_FILE: ${{ runner.temp }}/webproxy-release.p12
-          KEYSTORE_PASS: ${{ secrets.WEBPROXY_KEYSTORE_PASSWORD }}
-          ALIAS_PASS: ${{ secrets.WEBPROXY_KEYSTORE_PASSWORD }}
-          ALIAS_NAME: ${{ secrets.WEBPROXY_KEY_ALIAS }}
-          LOCAL_PROPERTIES: ''
-        run: ./gradlew TMessagesProj:assembleRelease --stacktrace
-      - name: Verify and stage release APK
-        env:
-          EXPECTED_SIGNER: 2a6ad2b3b9326cc6b0cd85063da46230ddc5587511cb978e862918384913efaa
-        run: |
-          mkdir -p out
-          APK=$(find TMessagesProj/build/outputs/apk/release -name '*.apk')
-          test "$(printf '%s\n' "$APK" | wc -l)" -eq 1
-          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
-          grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump xmltree "$APK" AndroidManifest.xml > out/manifest-tree-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
-          python3 - <<'PY'
-          import os,pathlib
-          abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
-          manifest=(p/('manifest-tree-'+abi+'.txt')).read_text()
-          assert 'com.msngram.messenger.' in manifest
-          assert 'nu.gpu.nagram.provider' not in manifest
-          assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in manifest
-          assert "application-label:'MSNgram'" in (p/('manifest-'+abi+'.txt')).read_text()
-          resources=(p/('resources-'+abi+'.txt')).read_text()
-          for name in ('ic_launcher_msngram_blue','msngram_icon_foreground','msngram_icon_monochrome','msngram_notification'):
-              assert name in resources,name
-          assert 'ic_launcher_nagram' not in resources
-          print('Package, provider authority, display name and MSNgram icon resources verified from APK')
-          PY
-          python3 - "$APK" <<'PY'
-          import sys,os,zipfile,pathlib,json,hashlib
-          apk=pathlib.Path(sys.argv[1]); abi=os.environ['NATIVE_TARGET']
-          z=zipfile.ZipFile(apk)
-          libs=[n for n in z.namelist() if n.startswith('lib/') and n.endswith('.so')]
-          assert libs and {n.split('/')[1] for n in libs}=={abi},libs
-          assert any('libtmessages' in n for n in libs),libs
-          dex=b''.join(z.read(n) for n in z.namelist() if n.endswith('.dex'))
-          for cls in (b'Lorg/telegram/utils/proxy/WebProxyTransport;',b'Lorg/telegram/utils/proxy/WebProxyConnectionTester;'):
-              assert cls in dex,cls
-          badging=pathlib.Path('out/manifest-'+abi+'.txt').read_text()
-          assert "name='com.msngram.messenger'" in badging
-          assert "versionName='12.10.0-msngram.1'" in badging and "versionCode='1263'" in badging
-          assert "sdkVersion:'27'" in badging
-          assert 'application-debuggable' not in badging
-          name='MSNgram-v12.10.0-msngram.1(1263)-'+abi+'.apk'
-          target=pathlib.Path('out')/name
-          target.write_bytes(apk.read_bytes())
-          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'12.10.0-msngram.1','versionCode':1263,'minSdk':27}
-          pathlib.Path('out/verification-'+abi+'.json').write_text(json.dumps(evidence,indent=2))
-          print(json.dumps(evidence))
-          PY
-      - name: Remove signing key
-        if: always()
-        run: rm -f "$RUNNER_TEMP/webproxy-release.p12"
+      - name: Build APK
+        run: ./gradlew TMessagesProj:assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with:
-          name: MSNgram-release-${{ matrix.abi }}
-          path: out/*
+          name: NagramX-WebProxy-arm64-debug
+          path: TMessagesProj/build/outputs/apk/**/*.apk
           if-no-files-found: error
