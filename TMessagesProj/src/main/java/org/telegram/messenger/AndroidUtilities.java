@@ -4605,6 +4605,13 @@ public class AndroidUtilities {
             }
             Uri data = intent.getData();
             if (data != null) {
+                org.telegram.utils.proxy.ProxySettings webSettings = org.telegram.utils.proxy.ProxySettings.fromUri(data);
+                if (webSettings != null && webSettings.getType() == org.telegram.utils.proxy.ProxySettings.Type.WEB) {
+                    if (invoked) {
+                        showProxyAlert(activity, webSettings.getAddress(), "0", "", "", webSettings.getSecret());
+                    }
+                    return true;
+                }
                 String user = null;
                 String password = null;
                 String port = null;
@@ -4712,7 +4719,7 @@ public class AndroidUtilities {
         if (!TextUtils.isEmpty(address)) {
             tableView.addRow(getString(R.string.UseProxyAddress), address);
         }
-        if (!TextUtils.isEmpty(port)) {
+        if (!TextUtils.isEmpty(port) && !"0".equals(port)) {
             tableView.addRow(getString(R.string.UseProxyPort), port);
         }
         if (!TextUtils.isEmpty(secret)) {

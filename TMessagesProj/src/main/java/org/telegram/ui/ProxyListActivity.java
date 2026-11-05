@@ -181,7 +181,7 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
         }
 
         public void setProxy(SharedConfig.ProxyInfo proxyInfo) {
-            textView.setText(proxyInfo.address + ":" + proxyInfo.port);
+            textView.setText(proxyInfo.isWeb() ? proxyInfo.address + " (WEB)" : proxyInfo.address + ":" + proxyInfo.port);
             currentInfo = proxyInfo;
         }
 

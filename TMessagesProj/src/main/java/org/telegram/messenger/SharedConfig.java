@@ -420,7 +420,23 @@ public class SharedConfig {
             }
         }
 
+        public boolean isWeb() {
+            return port == 0 && !TextUtils.isEmpty(secret);
+        }
+
+        public org.telegram.utils.proxy.ProxySettings toSettings() {
+            return org.telegram.utils.proxy.ProxySettings.builder()
+                    .setType(isWeb() ? org.telegram.utils.proxy.ProxySettings.Type.WEB
+                            : TextUtils.isEmpty(secret) ? org.telegram.utils.proxy.ProxySettings.Type.SOCKS5
+                            : org.telegram.utils.proxy.ProxySettings.Type.MTPROTO)
+                    .setAddress(address).setPort(port).setUser(username)
+                    .setPassword(password).setSecret(secret).build();
+        }
+
         public String getLink() {
+            if (isWeb()) {
+                return toSettings().getLink();
+            }
             StringBuilder url = new StringBuilder(!TextUtils.isEmpty(secret) ? "https://t.me/proxy?" : "https://t.me/socks?");
             try {
                 url.append("server=").append(URLEncoder.encode(address, "UTF-8")).append("&").append("port=").append(port);
@@ -438,6 +454,10 @@ public class SharedConfig {
         }
 
         public static ProxyInfo fromUrl(String url) {
+            org.telegram.utils.proxy.ProxySettings settings = org.telegram.utils.proxy.ProxySettings.fromUri(Uri.parse(url));
+            if (settings != null && settings.getType() == org.telegram.utils.proxy.ProxySettings.Type.WEB) {
+                return new ProxyInfo(settings.getAddress(), 0, "", "", settings.getSecret());
+            }
             Uri lnk = Uri.parse(url);
             if (lnk == null) throw new IllegalArgumentException(url);
             return new ProxyInfo(

@@ -1,0 +1,47 @@
+name: Web Proxy APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      NATIVE_TARGET: arm64-v8a
+      DEBUG_BUILD: 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'build-tools;36.0.0 ndk;27.2.12479018 platforms;android-37.0'
+      - name: Configure debug build
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          Path('local.properties').write_text('sdk.dir=' + __import__('os').environ['ANDROID_HOME'] + '\n')
+          p = Path('TMessagesProj/build.gradle')
+          p.write_text(p.read_text().replace('signingConfig = signingConfigs.release', 'signingConfig = signingConfigs.debug'))
+          p = Path('gradle.properties')
+          lines = [s for s in p.read_text().splitlines() if not s.startswith('org.gradle.jvmargs=')]
+          p.write_text('\n'.join(lines) + '\norg.gradle.jvmargs=-Xmx6G -XX:MaxMetaspaceSize=2G -Dfile.encoding=UTF-8\n')
+          PY
+      - name: Build APK
+        run: ./gradlew TMessagesProj:assembleDebug --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NagramX-WebProxy-arm64-debug
+          path: TMessagesProj/build/outputs/apk/**/*.apk
+          if-no-files-found: error

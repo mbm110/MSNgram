@@ -49,6 +49,9 @@ import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
 import org.telegram.ui.Components.VideoPlayer;
 import org.telegram.ui.LoginActivity;
+import org.telegram.utils.proxy.ProxySettings;
+import org.telegram.utils.proxy.WebProxyConnectionTester;
+import org.telegram.utils.proxy.WebProxyTransport;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -665,7 +668,13 @@ public class ConnectionsManager extends BaseController {
         int proxyPort = preferences.getInt("proxy_port", 1080);
 
         if (preferences.getBoolean("proxy_enabled", false) && !TextUtils.isEmpty(proxyAddress)) {
-            native_setProxySettings(currentAccount, proxyAddress, proxyPort, proxyUsername, proxyPassword, proxySecret);
+            SharedConfig.ProxyInfo proxyInfo = new SharedConfig.ProxyInfo(proxyAddress, proxyPort, proxyUsername, proxyPassword, proxySecret);
+            if (proxyInfo.isWeb()) {
+                int localPort = WebProxyTransport.start(proxyAddress, proxySecret);
+                native_setProxySettings(currentAccount, "127.0.0.1", localPort != 0 ? localPort : 9, "", "", proxySecret);
+            } else {
+                native_setProxySettings(currentAccount, proxyAddress, proxyPort, proxyUsername, proxyPassword, proxySecret);
+            }
         }
         String installer = "";
         try {
@@ -774,7 +783,24 @@ public class ConnectionsManager extends BaseController {
         if (secret == null) {
             secret = "";
         }
+        SharedConfig.ProxyInfo proxyInfo = new SharedConfig.ProxyInfo(address, port, username, password, secret);
+        if (proxyInfo.isWeb()) {
+            ProxySettings settings = ProxySettings.builder()
+                    .setType(ProxySettings.Type.WEB)
+                    .setAddress(address)
+                    .setPort(port)
+                    .setUser(username)
+                    .setPassword(password)
+                    .setSecret(secret)
+                    .build();
+            WebProxyConnectionTester.getInstance().checkProxy(settings, requestTimeDelegate, this::checkWebProxyInternal);
+            return 0;
+        }
         return native_checkProxy(currentAccount, address, port, username, password, secret, requestTimeDelegate);
+    }
+
+    private void checkWebProxyInternal(ProxySettings settings, int port, RequestTimeDelegate requestTimeDelegate) {
+        native_checkProxy(currentAccount, "127.0.0.1", port, "", "", settings.getSecret(), requestTimeDelegate);
     }
 
     public void setAppPaused(final boolean value, final boolean byScreenState) {
@@ -992,6 +1018,21 @@ public class ConnectionsManager extends BaseController {
         }
         if (secret == null) {
             secret = "";
+        }
+
+        if (enabled && !TextUtils.isEmpty(address)) {
+            SharedConfig.ProxyInfo proxyInfo = new SharedConfig.ProxyInfo(address, port, username, password, secret);
+            if (proxyInfo.isWeb()) {
+                int localPort = WebProxyTransport.start(address, secret);
+                address = "127.0.0.1";
+                port = localPort != 0 ? localPort : 9;
+                username = "";
+                password = "";
+            } else {
+                WebProxyTransport.stop();
+            }
+        } else {
+            WebProxyTransport.stop();
         }
 
         for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {

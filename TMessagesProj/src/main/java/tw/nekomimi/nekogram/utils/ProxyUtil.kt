@@ -305,7 +305,7 @@ object ProxyUtil {
 
             it.forEach { line ->
 
-                if (line.startsWith("tg://proxy") ||
+                if (line.startsWith("tg://webproxy") || line.startsWith("tg:webproxy") || line.startsWith("https://t.me/webproxy") || line.startsWith("tg://proxy") ||
                     line.startsWith("tg://socks") ||
                     line.startsWith("https://t.me/proxy") ||
                     line.startsWith("https://t.me/socks")) {
@@ -332,7 +332,7 @@ object ProxyUtil {
 
                     str.forEach { line ->
 
-                        if (line.startsWith("tg://proxy") ||
+                        if (line.startsWith("tg://webproxy") || line.startsWith("tg:webproxy") || line.startsWith("https://t.me/webproxy") || line.startsWith("tg://proxy") ||
                             line.startsWith("tg://socks") ||
                             line.startsWith("https://t.me/proxy") ||
                             line.startsWith("https://t.me/socks")) {
