@@ -15327,11 +15327,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     new SearchResult(403, getString(R.string.TelegramFAQ), getString(R.string.SettingsHelp), R.drawable.msg2_help, () -> Browser.openUrl(f.getParentActivity(), getString(R.string.TelegramFaqUrl))).withLink("tg://settings/faq"),
                     new SearchResult(404, getString(R.string.PrivacyPolicy), getString(R.string.SettingsHelp), R.drawable.msg2_help, () -> Browser.openUrl(f.getParentActivity(), getString(R.string.PrivacyPolicyUrl))).withLink("tg://settings/privacy-policy"),
             };
-            ArrayList<SettingsSearchResult> nagramSettings = SettingsHelper.onCreateSearchArray(
+            ArrayList<SettingsSearchResult> msngramSettings = SettingsHelper.onCreateSearchArray(
                     fragment -> AndroidUtilities.runOnUIThread(() -> f.presentFragment(fragment, false, false))
             );
             ArrayList<SearchResult> list = new ArrayList<>();
-            for (SettingsSearchResult oldResult: nagramSettings) {
+            for (SettingsSearchResult oldResult: msngramSettings) {
                 SearchResult result = new SearchResult(
                     oldResult.guid, oldResult.searchTitle, null, oldResult.path1, oldResult.path2, oldResult.iconResId, oldResult.openRunnable
                 );

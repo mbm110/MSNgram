@@ -47212,7 +47212,7 @@ public class ChatActivity extends BaseFragment implements
         ).setDuration(8000).show(true);
     }
 
-    interface NagramCopyMesage {
+    interface MSNgramCopyMessage {
         void run(boolean isCopy);
     }
 
@@ -47284,7 +47284,7 @@ public class ChatActivity extends BaseFragment implements
             });
         }
 
-        NagramCopyMesage run1 = (boolean isCopy) -> {
+        MSNgramCopyMessage run1 = (boolean isCopy) -> {
             String urlFinal = str;
             if (str.startsWith("video?") && messageObject != null && !messageObject.scheduled) {
                 MessageObject messageObject1 = messageObject;
