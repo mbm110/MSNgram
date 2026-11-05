@@ -70,7 +70,7 @@
     <string name="CallTo">Panggil ke **%1$s**?</string>
     <string name="DisableNumberRounding">Nonaktifkan Pembulatan Angka</string>
     <string name="Categories">Kategori</string>
-    <string name="OfficialChannel">Saluran Nagram</string>
+    <string name="OfficialChannel">Saluran MSNgram</string>
     <string name="About">Tentang</string>
     <string name="IgnoreBlockedAbout">Anda tidak akan lagi melihat pesan dari pengguna yang diblokir di grup.</string>
     <string name="SourceCode">Kode Sumber</string>
@@ -192,7 +192,7 @@
     <string name="ShowIdAndDc">Tampilkan ID / DC di Profil</string>
     <string name="UseDefaultTheme">Gunakan tema default *</string>
     <string name="DialogsSettings">Dialog</string>
-    <string name="NagramXPushService">Layanan Dorong</string>
+    <string name="NagramXPushService">MSNgram · Layanan Dorong</string>
     <string name="DisableSystemAccount">Nonaktifkan Akun Sistem</string>
     <string name="FilterMenu">Menu Penyaring Dialog</string>
     <string name="DisableProxyWhenVpnEnabled">Nonaktifkan Proksi Saat VPN Diaktifkan</string>

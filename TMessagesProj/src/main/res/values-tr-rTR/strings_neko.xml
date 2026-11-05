@@ -70,7 +70,7 @@
     <string name="CallTo">**%1$s** kişisi aransın mı?</string>
     <string name="DisableNumberRounding">Sayı Yuvarlamayı Devre Dışı Bırak</string>
     <string name="Categories">Kategoriler</string>
-    <string name="OfficialChannel">Nagram Kanalı</string>
+    <string name="OfficialChannel">MSNgram Kanalı</string>
     <string name="About">Hakkında</string>
     <string name="IgnoreBlockedAbout">Artık gruplarda engellenen kullanıcılardan gelen mesajları görmeyeceksiniz.</string>
     <string name="SourceCode">Kaynak Kod</string>
@@ -190,7 +190,7 @@
     <string name="ShowIdAndDc">Profilde Kimlik (ID) / Veri Merkezini Göster</string>
     <string name="UseDefaultTheme">Varsayılan temayı kullan *</string>
     <string name="DialogsSettings">Sohbetler</string>
-    <string name="NagramXPushService">Bildirim (Push) Servisi</string>
+    <string name="NagramXPushService">MSNgram · Bildirim (Push) Servisi</string>
     <string name="DisableSystemAccount">Sistem Hesabını Devre Dışı Bırak</string>
     <string name="FilterMenu">Sohbetler Filtre Menüsü</string>
     <string name="DisableProxyWhenVpnEnabled">VPN Etkinken Proxy\'yi Devre Dışı Bırak</string>

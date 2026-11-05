@@ -149,6 +149,9 @@ public class TypefaceHelper {
 
     public static SpannableStringBuilder getTitleText(int currentAccount) {
         String title = NaConfig.INSTANCE.getCustomTitle().String();
+        if ("Nagram X".equals(title) || "NagramX".equals(title) || "NagramX WebProxy".equals(title)) {
+            title = "MSNgram";
+        }
         if (NaConfig.INSTANCE.getCustomTitleUserName().Bool()) {
             TLRPC.User self = UserConfig.getInstance(currentAccount).getCurrentUser();
             if (self != null && self.first_name != null) {

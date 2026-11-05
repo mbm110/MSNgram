@@ -34,21 +34,21 @@ public class LauncherIconController {
     }
 
     public enum LauncherIcon {
-        DEFAULT("DefaultIcon", R.mipmap.ic_launcher_nagram, R.mipmap.icon_background_nagram, R.string.AppIconDefault),
-        GOOGLE("GoogleIcon", R.mipmap.icon_background_google, R.mipmap.icon_foreground_google, R.string.AppIconGoogle),
-        COLORFUL("ColorfulIcon", R.mipmap.icon_background_colorful, R.mipmap.icon_foreground_colorful, R.string.AppIconColorful),
-        DARKGREEN("DarkGreenIcon", R.mipmap.icon_background_darkgreen, R.mipmap.icon_foreground_darkgreen, R.string.AppIconDarkGreen),
-        NEON("NeonIcon", R.mipmap.icon_background_neon, R.mipmap.icon_foreground_neon, R.string.AppIconNeon),
-        NIELLO("NielloIcon", R.drawable.ic_launcher_nagram_round_niello_background, R.drawable.ic_launcher_nagram_round_niello_foreground, R.string.AppIconNiello),
-        BLUE("BlueIcon", R.color.nagram_block_round_background, R.drawable.ic_launcher_nagram_blue_foreground, R.string.AppIconBlue),
-        DARKBLUE("DarkBlueIcon", R.color.nagram_dark_blue_background, R.drawable.ic_launcher_nagram_dark_blue_foreground, R.string.AppIconDarkBlue),
-        BLURBLUE("BlurBlueIcon", R.drawable.ic_launcher_nagram_blur_blue_background, R.drawable.ic_launcher_nagram_blur_blue_foreground, R.string.AppIconBlurBlue),
-        TELEGRAM("TelegramIcon", R.drawable.icon_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconTelegramOriginal),
-        VINTAGE("VintageIcon", R.drawable.icon_6_background_sa, R.mipmap.icon_6_foreground_sa, R.string.AppIconVintage),
-        AQUA("AquaIcon", R.drawable.icon_4_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconAqua),
-        PREMIUM("PremiumIcon", R.drawable.icon_3_background_sa, R.mipmap.icon_3_foreground_sa, R.string.AppIconPremium),
-        TURBO("TurboIcon", R.drawable.icon_5_background_sa, R.mipmap.icon_5_foreground_sa, R.string.AppIconTurbo),
-        NOX("NoxIcon", R.mipmap.icon_2_background_sa, R.mipmap.icon_foreground_sa, R.string.AppIconNox);
+        DEFAULT("DefaultIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconDefault),
+        GOOGLE("GoogleIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconGoogle),
+        COLORFUL("ColorfulIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconColorful),
+        DARKGREEN("DarkGreenIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconDarkGreen),
+        NEON("NeonIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconNeon),
+        NIELLO("NielloIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconNiello),
+        BLUE("BlueIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconBlue),
+        DARKBLUE("DarkBlueIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconDarkBlue),
+        BLURBLUE("BlurBlueIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconBlurBlue),
+        TELEGRAM("TelegramIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconTelegramOriginal),
+        VINTAGE("VintageIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconVintage),
+        AQUA("AquaIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconAqua),
+        PREMIUM("PremiumIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconPremium),
+        TURBO("TurboIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconTurbo),
+        NOX("NoxIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconNox);
 
         public final String key;
         public final int background;

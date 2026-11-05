@@ -1,92 +1,52 @@
-# Nagram X
+# MSNgram
 
-> [!IMPORTANT]
-> This project is archived and no longer maintained. No further updates, bug fixes, or support will be provided. The source code and existing releases remain available for reference and for anyone who wishes to continue development in a fork.
+<p align="center"><img src="docs/branding/MSNgram.png" width="192" alt="MSNgram ribbon M icon"></p>
 
-## Archived Downloads
+MSNgram is an Android Telegram client based on [Nagram X](https://github.com/risin42/NagramX), with the experimental WEB Proxy transport ported from [Nagram](https://github.com/NextAlone/Nagram).
 
-Previously published versions remain available through:
+- Telegram messaging with inherited customization and privacy settings.
+- SOCKS5, MTProto and experimental WEB Proxy connections.
+- WEB Proxy import and sharing through `tg://webproxy` and `https://t.me/webproxy` links.
+- Cyan–purple ribbon M launcher icons and notification branding.
 
-* [Telegram Channel](https://t.me/NagramX)
-* [GitHub Releases](https://github.com/risin42/NagramX/releases)
+[Source](https://github.com/mbm110/MSNgram) · [Releases](https://github.com/mbm110/MSNgram/releases) · [Transport notes](WEB_PROXY_PORT.md)
 
-## Verify APK
+## Installation identity
 
-Official APKs use the following Android signing certificate:
+The application ID remains `nu.gpu.nagram.webproxy` so future signed MSNgram builds can update the existing fork installation. The release signing certificate SHA-256 is:
 
-* Package name: `nu.gpu.nagram` / `nu.gpu.nagramx` (base version)
-* SHA-256: `0D:51:91:56:E8:0C:91:8C:28:C4:80:BF:D1:3F:31:6A:3B:3B:F7:22:DB:53:2F:AB:74:66:0E:C8:E5:C5:06:A1`
+```text
+2A:6A:D2:B3:B9:32:6C:C6:B0:CD:85:06:3D:A4:62:30:DD:C5:58:75:11:CB:97:8E:86:29:18:38:49:13:EF:AA
+```
 
-## Compilation Guide
+Existing release APKs retain their original names and contents. This source rebrand does not replace those binaries. The original upstream application has a different package/signing identity.
 
-1. Clone the repository with its submodules:
+## WEB Proxy
 
-    ```bash
-    git clone --recursive --shallow-submodules https://github.com/risin42/NagramX.git NagramX
-    ```
+Open Settings → Data and Storage → Proxy Settings → Add Proxy → WEB Proxy. Supply a compatible WEB Proxy server and its 16-byte MTProxy secret. Ordinary HTTP or SOCKS servers do not provide this transport.
 
-    If you already cloned the repository without submodules, run:
+A recent Android System WebView is required. This experimental transport needs real-device foreground/background and connection testing; see [WEB_PROXY_PORT.md](WEB_PROXY_PORT.md).
 
-    ```bash
-    git submodule update --init --recursive --depth=1
-    ```
+## Development
 
-2. Obtain API credentials (`TELEGRAM_APP_ID` and `TELEGRAM_APP_HASH`) from [Telegram Developer Portal](https://my.telegram.org/auth). Create `local.properties` in the project root with:
+```bash
+git clone --recursive --shallow-submodules https://github.com/mbm110/MSNgram.git
+```
 
-   ```properties
-   TELEGRAM_APP_ID=<your_telegram_app_id>
-   TELEGRAM_APP_HASH=<your_telegram_app_hash>
-   ```
+The dedicated **MSNgram Release APKs** workflow (`.github/workflows/webproxy.yml`) is manual-only. It builds ARM32 and ARM64 signed APKs and checks the application label, package, signing certificate and native libraries. Building requires the existing `WEBPROXY_KEYSTORE_BASE64`, `WEBPROXY_KEYSTORE_PASSWORD` and `WEBPROXY_KEY_ALIAS` repository secrets. Preserve that signing key for installation updates. Do not commit keys or credentials.
 
-3. For APK signing: Replace `release.keystore` with your keystore and add signing configuration to `local.properties`:
+For an independent fork, obtain Telegram API credentials from [my.telegram.org](https://my.telegram.org/auth), configure the properties expected by `TMessagesProj/build.gradle`, and use your own Firebase configuration where needed. Repository-specific signing and Firebase identifiers are technical configuration.
 
-   ```properties
-   KEYSTORE_PASS=<your_keystore_password>
-   ALIAS_NAME=<your_alias_name>
-   ALIAS_PASS=<your_alias_password>
-   ```
+## Credits and license
 
-4. For FCM support: Replace `TMessagesProj/google-services.json` with your own configuration file.
+MSNgram preserves the original project license and upstream contributions. See [LICENSE](LICENSE). Upstream channel and translation links in the About screen are labeled as upstream resources.
 
-5. Replace project-specific metadata:
-
-    - Set your Google Maps API key in the `com.google.android.maps.v2.API_KEY` meta-data entry in `TMessagesProj/src/main/AndroidManifest.xml`.
-    - Set `BaseRemoteHelper.CHANNEL_METADATA_ID` in `TMessagesProj/src/main/java/tw/nekomimi/nekogram/helpers/remote/BaseRemoteHelper.java` to your metadata channel's numeric ID, without the `-100` prefix.
-
-6. Open the project in Android Studio to start building.
-
-## GitHub Actions Build
-
-The workflow can be used from a fork of this repository.
-
-1. Replace `TMessagesProj/release.keystore` with your keystore file.
-
-2. Configure `local.properties` with the following:
-
-   ```properties
-   KEYSTORE_PASS=<your_keystore_password>
-   ALIAS_NAME=<your_alias_name>
-   ALIAS_PASS=<your_alias_password>
-   TELEGRAM_APP_ID=<your_telegram_app_id>
-   TELEGRAM_APP_HASH=<your_telegram_app_hash>
-   ```
-
-   Base64 encode the contents of this file.
-
-3. Configure GitHub Action secrets:
-   - `LOCAL_PROPERTIES`: Base64-encoded content from step 2
-   - `HELPER_BOT_TOKEN`: Telegram bot token from [@Botfather](https://t.me/Botfather) (e.g., `1111:abcd`)
-   - `HELPER_BOT_TARGET`: Primary Telegram chat ID (e.g., `777000`)
-   - `HELPER_BOT_CANARY_TARGET`: Chat ID for test builds and metadata (can match `HELPER_BOT_TARGET`)
-
-4. Trigger the Release Build workflow.
-
-## Acknowledgments
-
+- [Telegram for Android](https://github.com/DrKLO/Telegram)
+- [Nagram X](https://github.com/risin42/NagramX)
+- [Nagram](https://github.com/NextAlone/Nagram)
 - [AyuGram](https://github.com/AyuGram/AyuGram4A)
 - [Cherrygram](https://github.com/arsLan4k1390/Cherrygram)
 - [Dr4iv3rNope](https://github.com/Dr4iv3rNope/NotSoAndroidAyuGram)
 - [exteraGram](https://github.com/exteraSquad/exteraGram)
-- [Nagram](https://github.com/NextAlone/Nagram)
 - [Nekogram](https://github.com/Nekogram/Nekogram)
 - [OctoGram](https://github.com/OctoGramApp/OctoGram)

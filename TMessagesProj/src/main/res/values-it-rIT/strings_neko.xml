@@ -70,7 +70,7 @@
     <string name="CallTo">Chiamare **%1$s**?</string>
     <string name="DisableNumberRounding">Disabilita l\'arrotondamento dei numeri</string>
     <string name="Categories">Categorie</string>
-    <string name="OfficialChannel">Canale Nagram</string>
+    <string name="OfficialChannel">Canale MSNgram</string>
     <string name="About">Informazioni</string>
     <string name="IgnoreBlockedAbout">Non vedrai più i messaggi degli utenti bloccati nei gruppi.</string>
     <string name="SourceCode">Codice Sorgente</string>
@@ -190,7 +190,7 @@
     <string name="ShowIdAndDc">Mostra ID / DC nel profilo</string>
     <string name="UseDefaultTheme">Usa tema predefinito *</string>
     <string name="DialogsSettings">Finestre di dialogo</string>
-    <string name="NagramXPushService">Servizio Push</string>
+    <string name="NagramXPushService">MSNgram · Servizio Push</string>
     <string name="DisableSystemAccount">Disabilita account di sistema</string>
     <string name="FilterMenu">Menu Filtro Dialoghi</string>
     <string name="DisableProxyWhenVpnEnabled">Disabilita proxy quando VPN è abilitato</string>
