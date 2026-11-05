@@ -42,7 +42,7 @@ import java.util.List;
 import me.vkryl.core.BitwiseUtils;
 
 import tw.nekomimi.nekogram.DialogConfig;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class ChatObject {
 

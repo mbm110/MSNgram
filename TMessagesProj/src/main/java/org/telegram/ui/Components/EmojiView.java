@@ -172,7 +172,7 @@ import me.vkryl.android.animator.BoolAnimator;
 import me.vkryl.android.animator.FactorAnimator;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 @SuppressLint("ViewConstructor")
 public class EmojiView extends FrameLayout implements

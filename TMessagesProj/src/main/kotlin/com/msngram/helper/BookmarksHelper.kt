@@ -1,9 +1,9 @@
-package xyz.nextalone.nagram.helper
+package com.msngram.helper
 
 import androidx.core.content.edit
 import org.telegram.messenger.UserConfig
-import xyz.nextalone.nagram.NaConfig
-import xyz.nextalone.nagram.ToggleResult
+import com.msngram.NaConfig
+import com.msngram.ToggleResult
 import java.util.concurrent.ConcurrentHashMap
 
 object BookmarksHelper {

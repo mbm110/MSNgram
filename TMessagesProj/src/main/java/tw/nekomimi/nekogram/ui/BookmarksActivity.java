@@ -77,8 +77,8 @@ import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.llm.LlmConfig;
 import tw.nekomimi.nekogram.translate.Translator;
 import tw.nekomimi.nekogram.ui.cells.NekoMessageCell;
-import xyz.nextalone.nagram.NaConfig;
-import xyz.nextalone.nagram.helper.BookmarksHelper;
+import com.msngram.NaConfig;
+import com.msngram.helper.BookmarksHelper;
 
 public class BookmarksActivity extends NekoDelegateFragment {
     private static final int OPTION_SHOW_IN_CHAT = 1;

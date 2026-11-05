@@ -28,7 +28,7 @@ import tw.nekomimi.nekogram.translate.locale2code
 import tw.nekomimi.nekogram.translate.source.LLMTranslator
 import tw.nekomimi.nekogram.utils.AlertUtil
 import tw.nekomimi.nekogram.utils.AppScope
-import xyz.nextalone.nagram.NaConfig
+import com.msngram.NaConfig
 import java.util.Locale
 import java.util.WeakHashMap
 

@@ -58,7 +58,7 @@ import org.telegram.ui.ChatBackgroundDrawable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class SizeNotifierFrameLayout extends FrameLayout implements Theme.Colorable {
 

@@ -84,7 +84,7 @@ import me.vkryl.android.animator.FactorAnimator;
 import me.vkryl.android.animator.ReplaceAnimator;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class ActionBar extends FrameLayout implements FactorAnimator.Target, Theme.Colorable {
 

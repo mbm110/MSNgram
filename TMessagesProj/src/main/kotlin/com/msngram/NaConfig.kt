@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram
+package com.msngram
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -551,7 +551,7 @@ object NaConfig {
             1
         )
 
-    // NagramX
+    // MSNgram
     val enableSaveDeletedMessages =
         addConfig(
             "EnableSaveDeletedMessages",

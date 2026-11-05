@@ -8,7 +8,7 @@ import tw.nekomimi.nekogram.llm.net.VertexGeminiClient
 import tw.nekomimi.nekogram.llm.preset.PresetRegistry
 import tw.nekomimi.nekogram.llm.utils.UrlNormalizer
 import tw.nekomimi.nekogram.translate.Translator
-import xyz.nextalone.nagram.NaConfig
+import com.msngram.NaConfig
 
 object LlmConfig {
 

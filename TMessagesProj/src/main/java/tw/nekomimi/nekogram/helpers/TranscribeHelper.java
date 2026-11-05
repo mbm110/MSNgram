@@ -51,7 +51,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import tw.nekomimi.nekogram.utils.HttpClient;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class TranscribeHelper {
     private static final Gson gson = new Gson();

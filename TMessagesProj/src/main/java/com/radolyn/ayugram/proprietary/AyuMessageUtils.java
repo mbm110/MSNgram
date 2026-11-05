@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.function.Function;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public abstract class AyuMessageUtils {
     public static <T extends TLObject> ArrayList<T> deserializeMultiple(byte[] serializedData, Function<NativeByteBuffer, T> deserializer) {

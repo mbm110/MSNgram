@@ -2,7 +2,7 @@ package tw.nekomimi.nekogram.llm.utils
 
 import org.json.JSONObject
 import tw.nekomimi.nekogram.llm.preset.PresetRegistry
-import xyz.nextalone.nagram.ThinkingLevel
+import com.msngram.ThinkingLevel
 import java.util.Locale
 
 object ModelUtil {

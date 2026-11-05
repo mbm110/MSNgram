@@ -88,7 +88,7 @@ import tw.nekomimi.nekogram.ErrorDatabase;
 import tw.nekomimi.nekogram.NekoXConfig;
 import tw.nekomimi.nekogram.utils.DnsFactory;
 import tw.nekomimi.nekogram.utils.ProxyUtil;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class ConnectionsManager extends BaseController {
 

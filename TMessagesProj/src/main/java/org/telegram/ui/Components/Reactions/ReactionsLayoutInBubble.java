@@ -68,7 +68,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import tw.nekomimi.nekogram.filters.ReactionFilter;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class ReactionsLayoutInBubble {
 

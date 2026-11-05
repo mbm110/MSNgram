@@ -46,7 +46,7 @@ import me.vkryl.android.animator.BoolAnimator;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.MonetHelper;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class Switch extends View {
     private final BoolAnimator animatorIconVisibility = new BoolAnimator(this, CubicBezierInterpolator.EASE_OUT_QUINT, 380L, true);

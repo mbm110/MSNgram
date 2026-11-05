@@ -102,7 +102,7 @@ import java.util.function.Consumer;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.NekoXConfig;
 import tw.nekomimi.nekogram.filters.AyuFilter;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class NotificationsController extends BaseController implements NotificationCenter.NotificationCenterDelegate {
 
@@ -4274,7 +4274,7 @@ public class NotificationsController extends BaseController implements Notificat
                         name = LocaleController.getString(R.string.NotificationHiddenName);
                     }
                 } else {
-                    name = LocaleController.getString(R.string.NagramX);
+                    name = LocaleController.getString(R.string.MSNgram);
                 }
                 replace = false;
             } else {
@@ -6333,9 +6333,9 @@ public class NotificationsController extends BaseController implements Notificat
             case 0:
                 return R.drawable.notification;
             case 1:
-                return R.drawable.nagramx_notification;
+                return R.drawable.msngram_x_notification;
             case 2:
-                return R.drawable.nagram_notification;
+                return R.drawable.msngram_notification;
             case 3:
                 return R.drawable.neko_notification;
         }

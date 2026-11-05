@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 @SuppressLint("UseCompatLoadingForDrawables")
 public class IconsResources extends Resources {

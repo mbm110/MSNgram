@@ -2,12 +2,14 @@ name: MSNgram Release APKs
 
 on:
   workflow_dispatch:
+  push:
+    branches: [dev]
 
 permissions:
   contents: read
 
 concurrency:
-  group: webproxy-release-${{ github.ref }}
+  group: msngram-build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -70,15 +72,20 @@ jobs:
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump xmltree "$APK" AndroidManifest.xml > out/manifest-tree-${NATIVE_TARGET}.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
           python3 - <<'PY'
           import os,pathlib
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
           manifest=(p/('manifest-tree-'+abi+'.txt')).read_text()
-          assert 'nu.gpu.nagram.webproxy.' in manifest
+          assert 'com.msngram.messenger.' in manifest
           assert 'nu.gpu.nagram.provider' not in manifest
           assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in manifest
           assert "application-label:'MSNgram'" in (p/('manifest-'+abi+'.txt')).read_text()
-          print('Package, provider authority and display name verified from binary manifest')
+          resources=(p/('resources-'+abi+'.txt')).read_text()
+          for name in ('ic_launcher_msngram_blue','msngram_icon_foreground','msngram_icon_monochrome','msngram_notification'):
+              assert name in resources,name
+          assert 'ic_launcher_nagram' not in resources
+          print('Package, provider authority, display name and MSNgram icon resources verified from APK')
           PY
           python3 - "$APK" <<'PY'
           import sys,os,zipfile,pathlib,json,hashlib
@@ -91,14 +98,14 @@ jobs:
           for cls in (b'Lorg/telegram/utils/proxy/WebProxyTransport;',b'Lorg/telegram/utils/proxy/WebProxyConnectionTester;'):
               assert cls in dex,cls
           badging=pathlib.Path('out/manifest-'+abi+'.txt').read_text()
-          assert "name='nu.gpu.nagram.webproxy'" in badging
-          assert "versionName='12.10.0'" in badging and "versionCode='1262'" in badging
+          assert "name='com.msngram.messenger'" in badging
+          assert "versionName='12.10.0-msngram.1'" in badging and "versionCode='1263'" in badging
           assert "sdkVersion:'27'" in badging
           assert 'application-debuggable' not in badging
-          name='MSNgram-v12.10.0(1262)-'+abi+'.apk'
+          name='MSNgram-v12.10.0-msngram.1(1263)-'+abi+'.apk'
           target=pathlib.Path('out')/name
           target.write_bytes(apk.read_bytes())
-          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'nu.gpu.nagram.webproxy','versionName':'12.10.0','versionCode':1262,'minSdk':27}
+          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'12.10.0-msngram.1','versionCode':1263,'minSdk':27}
           pathlib.Path('out/verification-'+abi+'.json').write_text(json.dumps(evidence,indent=2))
           print(json.dumps(evidence))
           PY

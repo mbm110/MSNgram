@@ -1,36 +1,55 @@
-package xyz.nextalone.nagram.helper
+package com.msngram.helper
 
 import androidx.core.content.edit
 import com.google.gson.Gson
 import org.telegram.messenger.UserConfig
 import org.telegram.tgnet.TLRPC
 import tw.nekomimi.nekogram.NekoConfig
-import xyz.nextalone.nagram.NaConfig
+import com.msngram.NaConfig
 
-data class LocalEmojiStatusData(
-    var documentId: Long?, var until: Int?
+data class LocalQuoteColorData(
+    var colorId: Int?, var emojiId: Long?, var profileColorId: Int?, var profileEmojiId: Long?
 )
 
-object LocalPremiumStatusHelper {
-    const val KEY_PREFIX = "useLocalEmojiStatusData_"
+object LocalPeerColorHelper {
+    const val KEY_PREFIX = "useLocalQuoteColorData_"
 
-    private val dataMap = mutableMapOf<Long, LocalEmojiStatusData?>()
+    private val dataMap = mutableMapOf<Long, LocalQuoteColorData?>()
     private val loadedUsers = mutableSetOf<Long>()
 
     @JvmStatic
-    fun getDocumentId(user: TLRPC.User?): Long? {
+    fun getColorId(user: TLRPC.User): Int? {
         if (!NekoConfig.localPremium.Bool()) return null
-        if (user == null || !isLocalUser(user.id)) return null
-
+        if (!isLocalUser(user.id)) return null
         val data = getDataForUser(user.id) ?: return null
-        val until = data.until ?: 0
-        if (until != 0 && until <= (System.currentTimeMillis() / 1000).toInt()) {
-            return null
-        }
-        return data.documentId
+        return data.colorId
     }
 
-    private fun getDataForUser(userId: Long): LocalEmojiStatusData? {
+    @JvmStatic
+    fun getEmojiId(user: TLRPC.User?): Long? {
+        if (!NekoConfig.localPremium.Bool()) return null
+        if (user == null || !isLocalUser(user.id)) return null
+        val data = getDataForUser(user.id) ?: return null
+        return data.emojiId
+    }
+
+    @JvmStatic
+    fun getProfileColorId(user: TLRPC.User): Int? {
+        if (!NekoConfig.localPremium.Bool()) return null
+        if (!isLocalUser(user.id)) return null
+        val data = getDataForUser(user.id) ?: return null
+        return data.profileColorId
+    }
+
+    @JvmStatic
+    fun getProfileEmojiId(user: TLRPC.User?): Long? {
+        if (!NekoConfig.localPremium.Bool()) return null
+        if (user == null || !isLocalUser(user.id)) return null
+        val data = getDataForUser(user.id) ?: return null
+        return data.profileEmojiId
+    }
+
+    private fun getDataForUser(userId: Long): LocalQuoteColorData? {
         if (userId == 0L) return null
         initForUser(userId)
         return dataMap[userId]
@@ -63,7 +82,7 @@ object LocalPremiumStatusHelper {
             var jsonStr = NaConfig.getPreferences().getString(userKey, null)
 
             if (jsonStr.isNullOrEmpty()) {
-                val legacyJson = NaConfig.useLocalEmojiStatusData.String()
+                val legacyJson = NaConfig.useLocalQuoteColorData.String()
                 if (legacyJson.isNotEmpty()) {
                     jsonStr = legacyJson
                     NaConfig.getPreferences().edit { putString(userKey, jsonStr) }
@@ -71,7 +90,7 @@ object LocalPremiumStatusHelper {
             }
 
             dataMap[userId] = if (!jsonStr.isNullOrEmpty()) {
-                gson.fromJson(jsonStr, LocalEmojiStatusData::class.java)
+                gson.fromJson(jsonStr, LocalQuoteColorData::class.java)
             } else {
                 null
             }
@@ -81,36 +100,16 @@ object LocalPremiumStatusHelper {
     }
 
     @JvmStatic
-    fun apply(status: TLRPC.EmojiStatus?) {
+    fun apply(colorId: Int, emojiId: Long, profileColorId: Int, profileEmojiId: Long) {
         if (!NekoConfig.localPremium.Bool()) return
 
         val userId = getCurrentUserId()
         if (userId == 0L) return
 
-        val userKey = KEY_PREFIX + userId
-
-        if (status == null || status is TLRPC.TL_emojiStatusEmpty) {
-            dataMap[userId] = null
-            NaConfig.getPreferences().edit { putString(userKey, "") }
-            return
-        }
-
-        var documentId: Long? = null
-        var until: Int? = null
-        when (status) {
-            is TLRPC.TL_emojiStatus -> {
-                documentId = status.document_id
-                until = if ((status.flags and 1) != 0) status.until else null
-            }
-
-            is TLRPC.TL_emojiStatusCollectible -> {
-                documentId = status.document_id
-                until = if ((status.flags and 1) != 0) status.until else null
-            }
-        }
-
-        val localData = LocalEmojiStatusData(documentId, until)
+        val localData = LocalQuoteColorData(colorId, emojiId, profileColorId, profileEmojiId)
         dataMap[userId] = localData
+
+        val userKey = KEY_PREFIX + userId
         NaConfig.getPreferences().edit { putString(userKey, Gson().toJson(localData)) }
     }
 }

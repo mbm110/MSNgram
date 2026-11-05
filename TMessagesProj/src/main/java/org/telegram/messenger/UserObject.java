@@ -17,8 +17,8 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.tgnet.tl.TL_account;
 
 import tw.nekomimi.nekogram.helpers.MessageHelper;
-import xyz.nextalone.nagram.helper.LocalPeerColorHelper;
-import xyz.nextalone.nagram.helper.LocalPremiumStatusHelper;
+import com.msngram.helper.LocalPeerColorHelper;
+import com.msngram.helper.LocalPremiumStatusHelper;
 
 public class UserObject {
 

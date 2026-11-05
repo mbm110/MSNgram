@@ -11,7 +11,7 @@ import java.util.Locale;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import tw.nekomimi.nekogram.llm.utils.ModelUtil;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public final class OpenAICompatClient {
 

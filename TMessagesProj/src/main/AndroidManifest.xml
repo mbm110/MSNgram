@@ -110,13 +110,13 @@
         android:restoreAnyVersion="true"
         android:backupAgent=".BackupAgent"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher_nagram_blue"
-        android:label="@string/NagramX"
+        android:icon="@mipmap/ic_launcher_msngram_blue"
+        android:label="@string/MSNgram"
         android:largeHeap="true"
         android:theme="@style/Theme.TMessages.Start"
         android:manageSpaceActivity="org.telegram.ui.ExternalActionActivity"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_nagram_blue_round"
+        android:roundIcon="@mipmap/ic_launcher_msngram_blue_round"
         android:supportsRtl="false"
         android:requestLegacyExternalStorage="true"
         android:hasFragileUserData="true"
@@ -132,8 +132,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.DefaultIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram"
-            android:roundIcon="@mipmap/ic_launcher_nagram_round"
+            android:icon="@mipmap/ic_launcher_msngram"
+            android:roundIcon="@mipmap/ic_launcher_msngram_round"
             android:exported="true">
 
             <intent-filter>
@@ -148,8 +148,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.GoogleIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_google"
-            android:roundIcon="@mipmap/ic_launcher_nagram_google_round"
+            android:icon="@mipmap/ic_launcher_msngram_google"
+            android:roundIcon="@mipmap/ic_launcher_msngram_google_round"
             android:exported="true">
 
             <intent-filter>
@@ -164,8 +164,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.ColorfulIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_colorful"
-            android:roundIcon="@mipmap/ic_launcher_nagram_colorful_round"
+            android:icon="@mipmap/ic_launcher_msngram_colorful"
+            android:roundIcon="@mipmap/ic_launcher_msngram_colorful_round"
             android:exported="true">
 
             <intent-filter>
@@ -180,8 +180,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.DarkGreenIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_darkgreen"
-            android:roundIcon="@mipmap/ic_launcher_nagram_darkgreen_round"
+            android:icon="@mipmap/ic_launcher_msngram_darkgreen"
+            android:roundIcon="@mipmap/ic_launcher_msngram_darkgreen_round"
             android:exported="true">
 
             <intent-filter>
@@ -196,8 +196,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.NeonIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_neon"
-            android:roundIcon="@mipmap/ic_launcher_nagram_neon_round"
+            android:icon="@mipmap/ic_launcher_msngram_neon"
+            android:roundIcon="@mipmap/ic_launcher_msngram_neon_round"
             android:exported="true">
 
             <intent-filter>
@@ -212,8 +212,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.NielloIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_round_niello"
-            android:roundIcon="@mipmap/ic_launcher_nagram_round_niello_round"
+            android:icon="@mipmap/ic_launcher_msngram_round_niello"
+            android:roundIcon="@mipmap/ic_launcher_msngram_round_niello_round"
             android:exported="true">
 
             <intent-filter>
@@ -228,8 +228,8 @@
             android:enabled="true"
             android:name="org.telegram.messenger.BlueIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_blue"
-            android:roundIcon="@mipmap/ic_launcher_nagram_blue_round"
+            android:icon="@mipmap/ic_launcher_msngram_blue"
+            android:roundIcon="@mipmap/ic_launcher_msngram_blue_round"
             android:exported="true">
 
             <intent-filter>
@@ -244,8 +244,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.DarkBlueIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_dark_blue"
-            android:roundIcon="@mipmap/ic_launcher_nagram_dark_blue_round"
+            android:icon="@mipmap/ic_launcher_msngram_dark_blue"
+            android:roundIcon="@mipmap/ic_launcher_msngram_dark_blue_round"
             android:exported="true">
 
             <intent-filter>
@@ -260,8 +260,8 @@
             android:enabled="false"
             android:name="org.telegram.messenger.BlurBlueIcon"
             android:targetActivity="org.telegram.ui.LaunchActivity"
-            android:icon="@mipmap/ic_launcher_nagram_blur_blue"
-            android:roundIcon="@mipmap/ic_launcher_nagram_blur_blue_round"
+            android:icon="@mipmap/ic_launcher_msngram_blur_blue"
+            android:roundIcon="@mipmap/ic_launcher_msngram_blur_blue_round"
             android:exported="true">
 
             <intent-filter>
@@ -413,7 +413,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/vnd.nu.gpu.nagram.webproxy.android.profile"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.msngram.messenger.android.profile"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -429,13 +429,13 @@
                 <data android:host="www.keepassdx.com" android:scheme="http" />
                 <data android:host="www.keepassdx.com" android:scheme="https" />
             </intent-filter>
-            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round" android:priority="1">
+            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round" android:priority="1">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="tonsite" />
             </intent-filter>
-            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round" android:priority="1">
+            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round" android:priority="1">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -460,8 +460,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/vnd.nu.gpu.nagram.webproxy.android.call"/>
-                <data android:mimeType="vnd.android.cursor.item/vnd.nu.gpu.nagram.webproxy.android.call.video"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.msngram.messenger.android.call"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.msngram.messenger.android.call.video"/>
             </intent-filter>
         </activity-alias>
         <activity
@@ -481,7 +481,7 @@
             android:stateNotNeeded="true"
             android:theme="@style/Theme.TMessages.Transparent"
             android:exported="true">
-            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round" android:priority="1">
+            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round" android:priority="1">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -494,7 +494,7 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
-            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round">
+            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round">
                 <action android:name="org.telegram.passport.AUTHORIZE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
@@ -505,7 +505,7 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
-            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round">
+            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round">
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
         </activity>
@@ -515,7 +515,7 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
-            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round">
+            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round">
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
         </activity>
@@ -524,7 +524,7 @@
 <!--            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"-->
 <!--            android:hardwareAccelerated="true"-->
 <!--            android:windowSoftInputMode="adjustPan">-->
-<!--            <intent-filter android:icon="@mipmap/ic_launcher_nagram_blue" android:roundIcon="@mipmap/ic_launcher_nagram_blue_round">-->
+<!--            <intent-filter android:icon="@mipmap/ic_launcher_msngram_blue" android:roundIcon="@mipmap/ic_launcher_msngram_blue_round">-->
 <!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>-->
 <!--            </intent-filter>-->
 <!--        </activity>-->
@@ -561,7 +561,7 @@
         <activity
             android:name="tw.nekomimi.nekogram.helpers.AppRestartHelper"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:process=":nagramx"
+            android:process=":msngram"
             android:exported="false"
         />
 

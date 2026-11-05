@@ -16,7 +16,7 @@ Open Settings → Data and Storage → Proxy Settings → Add Proxy → WEB Prox
 
 As in the upstream implementation, this is an experimental transport using an HTTPS page in a private WebView. A recent Android System WebView is required; upstream describes it as intended for foreground testing. Background delivery and device-specific behavior need real-device testing.
 
-The manual-only **MSNgram Release APKs** GitHub Actions workflow builds signed ARM32 and ARM64 APKs. It preserves this fork’s `nu.gpu.nagram.webproxy` application ID and release signing key so future builds can update existing fork installations. This branding change has not built or published new APKs.
+The **MSNgram Release APKs** GitHub Actions workflow builds signed ARM32 and ARM64 APKs on `dev` pushes or manual dispatch. MSNgram uses `com.msngram.messenger` and the stable fork signing key. It installs separately from the earlier WebProxy package. The workflow verifies build artifacts without publishing a GitHub release.
 
 Validation performed during the port: byte equality for all three upstream files, XML parsing, and `git diff --check`. Build and live connection results must be checked separately. No live WEB proxy endpoint or Android device was supplied for an end-to-end connection test.
 

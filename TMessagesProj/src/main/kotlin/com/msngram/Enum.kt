@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram
+package com.msngram
 
 enum class ToggleResult {
     ADDED,

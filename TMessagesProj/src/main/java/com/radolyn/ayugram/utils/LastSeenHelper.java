@@ -14,7 +14,7 @@ import org.telegram.ui.ChatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class LastSeenHelper {
     private static final int FLUSH_DELAY_MS = 5000;

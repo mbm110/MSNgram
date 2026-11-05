@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.MessageHelper;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class AyuFilter {
     private static final Object cacheLock = new Object();

@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 @Keep
 public class PushListenerController {

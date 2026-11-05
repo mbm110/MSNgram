@@ -19,7 +19,7 @@ import tw.nekomimi.nekogram.translate.HTMLKeeper
 import tw.nekomimi.nekogram.translate.Translator
 import tw.nekomimi.nekogram.translate.code2Locale
 import tw.nekomimi.nekogram.utils.AndroidUtil
-import xyz.nextalone.nagram.NaConfig
+import com.msngram.NaConfig
 import java.io.IOException
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.CoroutineContext

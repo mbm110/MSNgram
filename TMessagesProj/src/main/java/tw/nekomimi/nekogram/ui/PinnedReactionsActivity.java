@@ -78,7 +78,7 @@ import java.util.List;
 import tw.nekomimi.nekogram.config.ConfigItem;
 import tw.nekomimi.nekogram.helpers.PinnedElementsHelper;
 import tw.nekomimi.nekogram.ui.cells.ReactionsContainerPreviewCell;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class PinnedReactionsActivity extends BaseFragment {
 

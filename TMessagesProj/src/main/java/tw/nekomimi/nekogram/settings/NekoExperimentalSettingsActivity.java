@@ -70,7 +70,7 @@ import tw.nekomimi.nekogram.filters.RegexFiltersSettingActivity;
 import tw.nekomimi.nekogram.ui.PopupBuilder;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
 import tw.nekomimi.nekogram.utils.ShareUtil;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 @SuppressLint("RtlHardcoded")
 @SuppressWarnings("unused")

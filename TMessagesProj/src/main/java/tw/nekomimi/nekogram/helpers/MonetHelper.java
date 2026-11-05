@@ -18,7 +18,7 @@ import org.telegram.ui.ActionBar.Theme;
 
 import java.util.HashMap;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MonetHelper {

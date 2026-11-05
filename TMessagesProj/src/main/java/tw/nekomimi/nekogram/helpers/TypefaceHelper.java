@@ -23,7 +23,7 @@ import org.telegram.ui.Components.TypefaceSpan;
 import java.util.List;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class TypefaceHelper {
 

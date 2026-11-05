@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class UpdateHelper extends BaseRemoteHelper {
 
@@ -201,8 +201,10 @@ public class UpdateHelper extends BaseRemoteHelper {
     }
 
     public void checkNewVersionAvailable(Delegate delegate, boolean updateAlways) {
-        this.updateAlways = updateAlways;
-        load(delegate);
+        // Upstream metadata distributes APKs with a different installation identity.
+        // MSNgram builds and updates are distributed through the repository.
+        cleanAppUpdate();
+        delegate.onTLResponse(null, null);
     }
 
     private static final class InstanceHolder {

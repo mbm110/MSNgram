@@ -111,8 +111,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import xyz.nextalone.nagram.NaConfig;
-import xyz.nextalone.nagram.helper.StickerSetHelper;
+import com.msngram.NaConfig;
+import com.msngram.helper.StickerSetHelper;
 
 public class StickersAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate {
 

@@ -13,7 +13,7 @@ MSNgram is an Android Telegram client based on [Nagram X](https://github.com/ris
 
 ## Installation identity
 
-The application ID remains `nu.gpu.nagram.webproxy` so future signed MSNgram builds can update the existing fork installation. The release signing certificate SHA-256 is:
+MSNgram uses the application ID `com.msngram.messenger`, version `12.10.0-msngram.1` (1263). It installs separately from the earlier WebProxy build; accounts must be signed in again. Future MSNgram builds retain this package and signing key. The release signing certificate SHA-256 is:
 
 ```text
 2A:6A:D2:B3:B9:32:6C:C6:B0:CD:85:06:3D:A4:62:30:DD:C5:58:75:11:CB:97:8E:86:29:18:38:49:13:EF:AA
@@ -33,9 +33,9 @@ A recent Android System WebView is required. This experimental transport needs r
 git clone --recursive --shallow-submodules https://github.com/mbm110/MSNgram.git
 ```
 
-The dedicated **MSNgram Release APKs** workflow (`.github/workflows/webproxy.yml`) is manual-only. It builds ARM32 and ARM64 signed APKs and checks the application label, package, signing certificate and native libraries. Building requires the existing `WEBPROXY_KEYSTORE_BASE64`, `WEBPROXY_KEYSTORE_PASSWORD` and `WEBPROXY_KEY_ALIAS` repository secrets. Preserve that signing key for installation updates. Do not commit keys or credentials.
+The dedicated **MSNgram Release APKs** workflow (`.github/workflows/webproxy.yml`) runs on pushes to `dev` or manual dispatch. It builds ARM32 and ARM64 signed APKs and checks the application label, package, signing certificate and native libraries. Building requires the existing `WEBPROXY_KEYSTORE_BASE64`, `WEBPROXY_KEYSTORE_PASSWORD` and `WEBPROXY_KEY_ALIAS` repository secrets. Preserve that signing key for installation updates. Do not commit keys or credentials.
 
-For an independent fork, obtain Telegram API credentials from [my.telegram.org](https://my.telegram.org/auth), configure the properties expected by `TMessagesProj/build.gradle`, and use your own Firebase configuration where needed. Repository-specific signing and Firebase identifiers are technical configuration.
+For an independent fork, obtain Telegram API credentials from [my.telegram.org](https://my.telegram.org/auth), configure the properties expected by `TMessagesProj/build.gradle`, and use your own Firebase configuration where needed. The bundled Firebase project is inherited from upstream, with client package matching adjusted for this fork. Renaming the client package does not register a Firebase app; configure a project you control for production push delivery. Automatic upstream APK updates are disabled because their installation identity differs from MSNgram.
 
 ## Credits and license
 
@@ -50,3 +50,13 @@ MSNgram preserves the original project license and upstream contributions. See [
 - [exteraGram](https://github.com/exteraSquad/exteraGram)
 - [Nekogram](https://github.com/Nekogram/Nekogram)
 - [OctoGram](https://github.com/OctoGramApp/OctoGram)
+
+## فارسی
+
+برنامهٔ MSNgram کلاینت اندرویدی تلگرام با تنظیمات حریم خصوصی و شخصی‌سازی و پشتیبانی آزمایشی WEB Proxy است.
+
+شناسهٔ بسته `com.msngram.messenger` است و این نسخه جدا از WebProxy قبلی نصب می‌شود؛ ورود مجدد به حساب لازم است. آیکن برنامه همان نشان M فیروزه‌ای–بنفش است.
+
+ساخت‌های امضاشدهٔ ARM32 و ARM64 در [Actions](https://github.com/mbm110/MSNgram/actions/workflows/webproxy.yml) در دسترس قرار می‌گیرند. انتشار نسخه در Releases اقدامی جداگانه است. به‌روزرسانی خودکار از سرور پروژهٔ بالادستی غیرفعال است.
+
+اعتبار و مجوز پروژه‌های بالادستی در بخش Credits و فایل LICENSE حفظ شده است.

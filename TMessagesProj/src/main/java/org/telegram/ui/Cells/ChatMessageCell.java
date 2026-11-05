@@ -270,8 +270,8 @@ import tw.nekomimi.nekogram.helpers.MessageHelper;
 import tw.nekomimi.nekogram.helpers.TimeStringHelper;
 import tw.nekomimi.nekogram.helpers.TranscribeHelper;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
-import xyz.nextalone.nagram.NaConfig;
-import xyz.nextalone.nagram.helper.BookmarksHelper;
+import com.msngram.NaConfig;
+import com.msngram.helper.BookmarksHelper;
 
 import static tw.nekomimi.nekogram.helpers.MessageHelper.showForwardDate;
 
@@ -13633,7 +13633,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             } else if (drawInstantViewType == 20) {
                 str = getString(R.string.OpenGift);
             } else if (drawInstantViewType == 21) {
-                str = getString(R.string.AppUpdate).replace("Telegram", getString(R.string.NagramX));
+                str = getString(R.string.AppUpdate).replace("Telegram", getString(R.string.MSNgram));
             } else if (drawInstantViewType == 23) {
                 str = getString(R.string.OpenStickerSet);
             } else if (drawInstantViewType == 24) {

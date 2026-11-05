@@ -23,7 +23,7 @@ import java.security.spec.ECGenParameterSpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 
 import tw.nekomimi.nekogram.utils.WebPushDecryptor;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 @SuppressWarnings("NullableProblems")
 public class UnifiedPushService extends PushService {
@@ -98,7 +98,7 @@ public class UnifiedPushService extends PushService {
         numOfReceivedNotifications++;
 
         PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
-        PowerManager.WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "nagramx:wp");
+        PowerManager.WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "msngram:wp");
         wakeLock.acquire(WAKELOCK_TIMEOUT_MS);
 
         loadWebPushKeys();

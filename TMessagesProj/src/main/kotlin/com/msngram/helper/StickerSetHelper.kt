@@ -1,4 +1,4 @@
-package xyz.nextalone.nagram.helper
+package com.msngram.helper
 
 import android.text.TextUtils
 import org.telegram.messenger.AndroidUtilities

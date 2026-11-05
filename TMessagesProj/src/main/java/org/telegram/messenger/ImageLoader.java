@@ -92,7 +92,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
 
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 /**
  * image filter types

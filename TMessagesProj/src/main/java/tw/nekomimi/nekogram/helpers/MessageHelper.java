@@ -92,7 +92,7 @@ import java.util.regex.Pattern;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.filters.AyuFilter;
 import tw.nekomimi.nekogram.parts.MessageTransKt;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class MessageHelper extends BaseController {
 
@@ -882,7 +882,7 @@ public class MessageHelper extends BaseController {
                 newMessage.restriction_reason != null && !newMessage.restriction_reason.isEmpty();
     }
 
-    // Merged from xyz.nextalone.nagram.helper.MessageHelper.kt
+    // Merged from com.msngram.helper.MessageHelper.kt
 
     private static final SpannableStringBuilder[] spannedStrings = new SpannableStringBuilder[5];
     private static final Pattern ZALGO_PATTERN = Pattern.compile("\\p{M}{4}");

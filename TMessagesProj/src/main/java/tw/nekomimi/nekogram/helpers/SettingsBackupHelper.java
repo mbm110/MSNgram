@@ -44,10 +44,10 @@ import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.FileUtil;
 import tw.nekomimi.nekogram.utils.GsonUtil;
 import tw.nekomimi.nekogram.utils.ShareUtil;
-import xyz.nextalone.nagram.NaConfig;
-import xyz.nextalone.nagram.helper.BookmarksHelper;
-import xyz.nextalone.nagram.helper.LocalPeerColorHelper;
-import xyz.nextalone.nagram.helper.LocalPremiumStatusHelper;
+import com.msngram.NaConfig;
+import com.msngram.helper.BookmarksHelper;
+import com.msngram.helper.LocalPeerColorHelper;
+import com.msngram.helper.LocalPremiumStatusHelper;
 
 public final class SettingsBackupHelper {
     public static String backupSettingsJson(boolean isCloud, int indentSpaces) throws JSONException {
@@ -177,7 +177,7 @@ public final class SettingsBackupHelper {
             importSettings(configJson);
 
             AlertDialog restart = new AlertDialog(context, 0);
-            restart.setTitle(getString(R.string.NagramX));
+            restart.setTitle(getString(R.string.MSNgram));
             restart.setMessage(getString(R.string.RestartAppToTakeEffect));
             restart.setPositiveButton(getString(R.string.OK), (__, ___) -> AppRestartHelper.triggerRebirth(context, new Intent(context, LaunchActivity.class)));
             restart.show();

@@ -39,7 +39,7 @@ import java.util.Locale;
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
 import tw.nekomimi.nekogram.ui.cells.AccountCell;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
-import xyz.nextalone.nagram.NaConfig;
+import com.msngram.NaConfig;
 
 public class NekoPasscodeSettingsActivity extends BaseNekoSettingsActivity {
 
