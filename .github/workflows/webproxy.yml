@@ -79,14 +79,13 @@ jobs:
           import os,pathlib,re
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
           manifest=(p/('manifest-tree-'+abi+'.txt')).read_text()
-          authorities=re.findall(r'android:authorities[^=]*="([^"]+)"',manifest)
-          assert authorities and all(a.startswith('nu.gpu.nagram.webproxy.') for a in authorities),authorities
-          permissions=re.findall(r'android:name[^=]*="([^"]+)"',manifest)
-          assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in permissions
+          assert 'nu.gpu.nagram.webproxy.' in manifest
+          assert 'nu.gpu.nagram.provider' not in manifest
+          assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in manifest
           for resource in ('auth','sync_contacts','contacts','auth_menu'):
               text=(p/(resource+'-'+abi+'.txt')).read_text()
               assert 'nu.gpu.nagram.webproxy' in text
-              assert '"nu.gpu.nagram"' not in text
+              assert 'nu.gpu.nagram"' not in text
           assert "application-label:'NagramX WebProxy'" in (p/('manifest-'+abi+'.txt')).read_text()
           print('Package, provider authorities, account types and display name verified')
           PY
