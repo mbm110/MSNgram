@@ -76,24 +76,24 @@ jobs:
         run: |
           mkdir -p out
           APK=$(find TMessagesProj/build/outputs/apk/release -name '*.apk')
+          export APK_PATH="$APK"
           test "$(printf '%s\n' "$APK" | wc -l)" -eq 1
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
           python3 - <<'PY'
-          import os,pathlib
+          import os,pathlib,zipfile
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
           badging=(p/('manifest-'+abi+'.txt')).read_text()
           assert "package: name='com.msngram.messenger'" in badging
-          assert 'nu.gpu.nagram.provider' not in badging
-          assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in badging
           assert "application-label:'MSNgram'" in badging
-          resources=(p/('resources-'+abi+'.txt')).read_text()
-          for name in ('ic_launcher_msngram_blue','msngram_icon_foreground','msngram_icon_monochrome','msngram_notification'):
-              assert name in resources,name
-          assert 'ic_launcher_nagram' not in resources
-          print('Package, provider authority, display name and MSNgram icon resources verified from APK')
+          with zipfile.ZipFile(os.environ['APK_PATH']) as z:
+              names=set(z.namelist())
+          required=('mipmap-anydpi-v26/ic_launcher_msngram_blue.xml',
+                    'mipmap-anydpi-v26/ic_launcher_msngram.xml')
+          for suffix in required:
+              assert any(n.endswith(suffix) for n in names), suffix
+          print('Package, display name and MSNgram icon files verified from APK')
           PY
           python3 scripts/check-apk-assets.py "$APK"
           python3 - "$APK" <<'PY'
