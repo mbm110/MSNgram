@@ -70,6 +70,14 @@ jobs:
           python3 scripts/test-localization-generator.py
           ./gradlew TMessagesProj:compileReleaseKotlin TMessagesProj:compileReleaseJavaWithJavac TMessagesProj:checkReleaseDuplicateClasses TMessagesProj:processReleaseMainManifest --stacktrace
           ./gradlew TMessagesProj:assembleRelease --stacktrace
+      - name: Preserve raw signed APK for verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: MSNgram-raw-${{ matrix.abi }}
+          path: TMessagesProj/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+
       - name: Verify and stage release APK
         env:
           EXPECTED_SIGNER: 2a6ad2b3b9326cc6b0cd85063da46230ddc5587511cb978e862918384913efaa
@@ -88,8 +96,9 @@ jobs:
           badging=(p/('manifest-'+abi+'.txt')).read_text()
           resources=(p/('resources-'+abi+'.txt')).read_text()
           assert "package: name='com.msngram.messenger'" in badging, 'compiled package identity missing from aapt2 badging'
-          labels=[line for line in badging.splitlines() if line.startswith('application-label:')]
-          assert labels and any('MSNgram' in line for line in labels), 'resolved application-label is not MSNgram: '+repr(labels)
+          blocks=re.split(r'(?=resource 0x)', resources)
+          app_blocks=[b for b in blocks if 'string/AppName' in b]
+          assert app_blocks and any(re.search(r'\(string8\)\s+"MSNgram"', b) for b in app_blocks), 'compiled AppName does not resolve to MSNgram'
           for name in ('mipmap/ic_launcher_msngram_blue','mipmap/ic_launcher_msngram'):
               assert name in resources, 'compiled icon resource missing: '+name
           print('Package, resolved application-label and MSNgram icon resource IDs verified from APK resources.arsc')
