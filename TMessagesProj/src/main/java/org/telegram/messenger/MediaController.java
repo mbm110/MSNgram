@@ -4550,6 +4550,10 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     }
 
     private boolean shouldUseAudioRecorderV2(int account) {
+        // MSNgram's bitrate and enhancement controls belong to the legacy recorder.
+        if (NekoConfig.customAudioBitrate.Int() != 32 || NaConfig.INSTANCE.getNoiseSuppressAndVoiceEnhance().Bool()) {
+            return false;
+        }
         return SharedSettings.audioRecorderV2Enabled.isSet() ?
             SharedSettings.audioRecorderV2Enabled.get() :
             !MessagesController.getInstance(account).config.audioRecorderV2Disabled.get();

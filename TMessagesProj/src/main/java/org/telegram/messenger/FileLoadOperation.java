@@ -843,7 +843,8 @@ public class FileLoadOperation {
     // Snapshot the policy for this operation, including its connection pool.
     // Streams use it too, like TDLib, which shares one downloader between streaming and downloads.
     private void updateDownloadByteBudget() {
-        useDownloadByteBudget = !MessagesController.getInstance(currentAccount).downloadImprovementKillswitch &&
+        useDownloadByteBudget = !NekoConfig.enhancedFileLoader.Bool() &&
+                !MessagesController.getInstance(currentAccount).downloadImprovementKillswitch &&
                 totalBytesCount > 0 && key == null && !encryptFile && !isPreloadVideoOperation && preloadPrefixSize == 0;
         if (useDownloadByteBudget) {
             boolean premium = UserConfig.getInstance(currentAccount).isPremium();

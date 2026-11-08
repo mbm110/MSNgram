@@ -52,6 +52,11 @@ jobs:
           p = Path('gradle.properties')
           lines = [s for s in p.read_text().splitlines() if not s.startswith('org.gradle.jvmargs=')]
           p.write_text('\n'.join(lines) + '\norg.gradle.jvmargs=-Xmx6G -XX:MaxMetaspaceSize=2G -Dfile.encoding=UTF-8\n')
+          for module in Path('TMessagesProj_Modules/media/libraries').glob('*/build.gradle'):
+              text = module.read_text()
+              text = text.replace("apply plugin: 'kotlin-android'", "// Kotlin is provided by the Android Gradle plugin.")
+              text = __import__('re').sub(r'\n    kotlinOptions \{\n        jvmTarget = \'1\.8\'\n    \}\n', '\n', text)
+              module.write_text(text)
           PY
       - name: Build signed release APK
         env:
@@ -60,7 +65,9 @@ jobs:
           ALIAS_PASS: ${{ secrets.WEBPROXY_KEYSTORE_PASSWORD }}
           ALIAS_NAME: ${{ secrets.WEBPROXY_KEY_ALIAS }}
           LOCAL_PROPERTIES: ''
-        run: ./gradlew TMessagesProj:assembleRelease --stacktrace
+        run: |
+          ./gradlew TMessagesProj:compileReleaseKotlin TMessagesProj:compileReleaseJavaWithJavac TMessagesProj:checkReleaseDuplicateClasses --stacktrace
+          ./gradlew TMessagesProj:assembleRelease --stacktrace
       - name: Verify and stage release APK
         env:
           EXPECTED_SIGNER: 2a6ad2b3b9326cc6b0cd85063da46230ddc5587511cb978e862918384913efaa
@@ -99,13 +106,13 @@ jobs:
               assert cls in dex,cls
           badging=pathlib.Path('out/manifest-'+abi+'.txt').read_text()
           assert "name='com.msngram.messenger'" in badging
-          assert "versionName='12.10.0-msngram.1'" in badging and "versionCode='1263'" in badging
+          assert "versionName='13.1.1-msngram.1'" in badging and "versionCode='1264'" in badging
           assert "sdkVersion:'27'" in badging
           assert 'application-debuggable' not in badging
-          name='MSNgram-v12.10.0-msngram.1(1263)-'+abi+'.apk'
+          name='MSNgram-v13.1.1-msngram.1(1264)-'+abi+'.apk'
           target=pathlib.Path('out')/name
           target.write_bytes(apk.read_bytes())
-          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'12.10.0-msngram.1','versionCode':1263,'minSdk':27}
+          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'13.1.1-msngram.1','versionCode':1264,'minSdk':27}
           pathlib.Path('out/verification-'+abi+'.json').write_text(json.dumps(evidence,indent=2))
           print(json.dumps(evidence))
           PY
