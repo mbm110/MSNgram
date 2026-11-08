@@ -9,6 +9,7 @@ import android.util.SparseArray;
 import android.webkit.MimeTypeMap;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.OptIn;
 import androidx.annotation.Nullable;
 import androidx.collection.LongSparseArray;
 

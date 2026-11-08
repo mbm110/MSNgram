@@ -9,7 +9,7 @@ import android.os.Build;
 import android.os.CancellationSignal;
 import android.os.Handler;
 import android.os.Looper;
-import android.hardware.fingerprint.FingerprintManager;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;
@@ -144,7 +144,7 @@ public final class GramWalletStorageAuth {
         // activity ViewModel with BotBiometry. No Cipher crosses the framework/OEM boundary.
         @SuppressWarnings("deprecation")
         private void fingerprints() {
-            FingerprintManager manager = (FingerprintManager) activity.getSystemService(Context.FINGERPRINT_SERVICE);
+            FingerprintManagerCompat manager = FingerprintManagerCompat.from(activity);
             if (manager == null || !manager.isHardwareDetected() || !manager.hasEnrolledFingerprints()) {
                 credentials();
                 return;
@@ -157,8 +157,8 @@ public final class GramWalletStorageAuth {
                     .setPositiveButton(LocaleController.getString(R.string.WalletUseDevicePasscode), (dialog, which) -> credentials())
                     .setOnCancelListener(dialog -> finish("AUTH_CANCELED"))
                     .show();
-            manager.authenticate(null, cancellation, 0, new FingerprintManager.AuthenticationCallback() {
-                @Override public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) { if (!credentialStarted) finish(null); }
+            manager.authenticate(null, 0, cancellation, new FingerprintManagerCompat.AuthenticationCallback() {
+                @Override public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) { if (!credentialStarted) finish(null); }
                 @Override public void onAuthenticationFailed() {
                     if (waiting() && fingerprintDialog != null) fingerprintDialog.setMessage(LocaleController.getString(R.string.WalletFingerprintRetry));
                 }
@@ -167,7 +167,7 @@ public final class GramWalletStorageAuth {
                 }
                 @Override public void onAuthenticationError(int code, CharSequence message) {
                     if (!waiting() || credentialStarted) return;
-                    if (code == FingerprintManager.FINGERPRINT_ERROR_CANCELED) finish("AUTH_CANCELED");
+                    if (code == androidx.biometric.BiometricPrompt.ERROR_CANCELED) finish("AUTH_CANCELED");
                     else credentials();
                 }
             }, new Handler(Looper.getMainLooper()));

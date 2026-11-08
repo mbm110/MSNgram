@@ -364,6 +364,13 @@ public final class InstantCameraView2 extends InstantCameraViewBase {
         );
     }
 
+    private RoundVideoSession.CameraFacing initialFacing;
+
+    @Override
+    public void setUseFrontCamera(boolean useFront) {
+        initialFacing = useFront ? RoundVideoSession.CameraFacing.FRONT : RoundVideoSession.CameraFacing.BACK;
+    }
+
     @Override
     public void showCamera(boolean fromPaused) {
         if (session != null) return;
@@ -381,7 +388,7 @@ public final class InstantCameraView2 extends InstantCameraViewBase {
         activeOutputResolution = SharedSettings.roundVideoOutputResolution.get();
         session = new RoundVideoSession.Builder(getContext(), textureView)
                 .setOutputDirectory(new File(ApplicationLoader.getFilesDirFixed(), "cache"))
-                .setInitialFacing(SharedSettings.roundVideoLastCamera.get())
+                .setInitialFacing(initialFacing != null ? initialFacing : SharedSettings.roundVideoLastCamera.get())
                 .setOutputResolution(activeOutputResolution)
                 .setVideoBitrate(SharedSettings.roundVideoVideoBitrate.get())
                 .setCameraResolution(SharedSettings.roundVideoCameraResolution.get())

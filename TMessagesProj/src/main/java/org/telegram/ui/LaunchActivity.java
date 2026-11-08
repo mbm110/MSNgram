@@ -7939,7 +7939,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 ForumUtilities.switchAllFragmentsInStackToForum(chatId, actionBarLayout);
             }
         } else if (id == NotificationCenter.tlSchemeParseException) {
-            if (BuildConfig.DEBUG_PRIVATE_VERSION) {
+            if (BuildVars.DEBUG_PRIVATE_VERSION) {
                 return;
             }
             if (tlErrorAlertDialog == null) {
