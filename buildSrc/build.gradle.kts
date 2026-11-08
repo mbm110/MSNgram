@@ -4,6 +4,10 @@ plugins {
 
 gradlePlugin {
     plugins {
+        register("NagramPatchPlugin") {
+            id = "xyz.nagram.auto-patch-plugin"
+            implementationClass = "xyz.nagram.plugin.NagramPatchPlugin"
+        }
         register("telegramBuildPlugin") {
             id = "org.telegram.build-plugin"
             implementationClass = "org.telegram.plugin.TelegramBuildPlugin"

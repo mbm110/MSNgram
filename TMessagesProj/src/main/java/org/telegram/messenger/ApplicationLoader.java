@@ -373,7 +373,7 @@ public class ApplicationLoader extends Application {
                 }
             }
         };
-        if (BuildConfig.DEBUG_VERSION) {
+        if (BuildConfig.DEBUG) {
             new ANRDetector(FileLog::dumpANR);
         }
 

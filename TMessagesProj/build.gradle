@@ -7,6 +7,7 @@ plugins {
     id 'com.google.firebase.crashlytics'
     id 'org.telegram.build-plugin'
     id 'org.telegram.build-app-plugin'
+    id 'xyz.nagram.auto-patch-plugin'
     id 'idea'
 }
 
