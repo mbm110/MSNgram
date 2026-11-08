@@ -39,12 +39,27 @@ def snapshot(ref, path):
 
 
 def sources(ref):
-    listing = git('ls-tree', '-r', '--name-only', ref, 'TMessagesProj/src/main', 'TMessagesProj/jni/tgnet').decode().splitlines()
-    for path in listing:
-        if path.endswith(('.java', '.kt', '.cpp', '.h')):
-            data = snapshot(ref, path)
-            if data is not None:
+    listing = git('ls-tree', '-r', ref, 'TMessagesProj/src/main', 'TMessagesProj/jni/tgnet').decode().splitlines()
+    # One persistent object reader avoids thousands of git process launches.
+    with subprocess.Popen(['git', 'cat-file', '--batch'], stdin=subprocess.PIPE, stdout=subprocess.PIPE) as reader:
+        try:
+            for entry in listing:
+                metadata, path = entry.split('\t', 1)
+                mode, kind, oid = metadata.split()
+                if kind != 'blob' or not path.endswith(('.java', '.kt', '.cpp', '.h')):
+                    continue
+                reader.stdin.write((oid + '\n').encode())
+                reader.stdin.flush()
+                header = reader.stdout.readline().split()
+                if len(header) != 3 or header[1] != b'blob':
+                    raise RuntimeError(f'Unable to read audit source {ref}:{path}')
+                data = reader.stdout.read(int(header[2]))
+                if reader.stdout.read(1) != b'\n':
+                    raise RuntimeError(f'Incomplete audit source {ref}:{path}')
                 yield path, data.decode(errors='replace')
+        finally:
+            reader.stdin.close()
+            reader.wait()
 
 
 def main():

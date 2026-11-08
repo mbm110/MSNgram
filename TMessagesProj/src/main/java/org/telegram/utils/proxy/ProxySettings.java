@@ -170,7 +170,7 @@ public final class ProxySettings {
         final int proxyPort = preferences.getInt("proxy_port", 1080);
         final ProxySettings.Type proxyType = ProxySettings.intToType(preferences.getInt("proxy_type", ProxySettings.typeToInt(TextUtils.isEmpty(proxySecret)
                 ? ProxySettings.Type.SOCKS5
-                : ProxySettings.Type.MTPROTO)));
+                : proxyPort == 0 ? ProxySettings.Type.WEB : ProxySettings.Type.MTPROTO)));
 
         return builder()
                 .setAddress(proxyAddress)
