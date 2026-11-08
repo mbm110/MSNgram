@@ -110,7 +110,7 @@ jobs:
           assert "versionName='13.1.1-msngram.2'" in badging and "versionCode='1265'" in badging
           assert "sdkVersion:'27'" in badging
           assert 'application-debuggable' not in badging
-          name='MSNgram-v13.1.1-msngram.2(1265)-'+abi+'.apk'
+          name='MSNgram-v13.1.1-msngram.2-'+abi+'.apk'
           target=pathlib.Path('out')/name
           target.write_bytes(apk.read_bytes())
           evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'13.1.1-msngram.2','versionCode':1265,'minSdk':27}
