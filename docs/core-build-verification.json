@@ -1,0 +1,23 @@
+{
+  "run_id": 42504237479,
+  "run_url": "https://github.com/mbm110/MSNgram/actions/runs/42504237479",
+  "build_sha": "03b12aba5ae22317284fe8494e2404bcaa567bbc",
+  "conclusion": "success",
+  "versionName": "13.1.1-msngram.1",
+  "versionCode": 1264,
+  "package": "com.msngram.messenger",
+  "minSdk": 27,
+  "debuggable": false,
+  "label": "MSNgram",
+  "signer_sha256": "2a6ad2b3b9326cc6b0cd85063da46230ddc5587511cb978e862918384913efaa",
+  "apk_dex_layer": 232,
+  "apk_dex_layer_location": "classes3.dex TLRPC static encoded field LAYER",
+  "webproxy_descriptors": ["Lorg/telegram/utils/proxy/WebProxyTransport;", "Lorg/telegram/utils/proxy/WebProxyConnectionTester;"],
+  "branding_resources_verified": ["ic_launcher_msngram_blue", "msngram_icon_foreground", "msngram_icon_monochrome", "msngram_notification"],
+  "checks": ["Kotlin/Java compilation", "duplicate classes", "manifest merge", "native assembly", "apksigner cryptographic verification in CI", "local v2/v3 signer certificate extraction", "downloaded APK hashes match CI evidence", "package/version/minSdk/non-debuggable", "label and icon resources", "native ABI isolation and libtmessages", "WebProxy dex descriptors", "local binary DEX layer field decoding"],
+  "artifacts": [
+    {"abi": "armeabi-v7a", "artifact_id": 13627152557, "name": "MSNgram-v13.1.1-msngram.1(1264)-armeabi-v7a.apk", "size": 47791546, "sha256": "83fcfc70e971d6dddbd8652d0340cff4294a828a6f59134433387b2a67eef306"},
+    {"abi": "arm64-v8a", "artifact_id": 13627341997, "name": "MSNgram-v13.1.1-msngram.1(1264)-arm64-v8a.apk", "size": 48972231, "sha256": "6dddf083681054ff6ba0464f0e6b83f963291471ed55d203d7fb9f96531093d6"}
+  ],
+  "limits": ["No device installation or functional testing", "Full Nagram custom snapshot parity is not established; see core-preservation-review.md", "No merge or publication performed"]
+}
