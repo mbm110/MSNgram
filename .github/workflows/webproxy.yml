@@ -89,7 +89,7 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump xmltree "$APK" AndroidManifest.xml > out/manifest-tree-${NATIVE_TARGET}.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump xmltree --file AndroidManifest.xml "$APK" > out/manifest-tree-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
           python3 - <<'PY'
           import os,pathlib,re
