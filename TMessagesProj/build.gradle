@@ -224,6 +224,7 @@ configurations.configureEach {
 }
 
 dependencies {
+    implementation project(':TMessagesProj_Modules:media:media-lib-exoplayer')
     // official
     implementation 'androidx.core:core-ktx:1.19.0'
     implementation 'androidx.palette:palette-ktx:1.0.0'
