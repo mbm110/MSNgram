@@ -15,6 +15,8 @@ A full recursive snapshot merge using Nagram 12.10.0 `4e1a61eca` as an explicit 
 
 Run `python3 scripts/audit-core-preservation.py --output /path/to/report.json`. It enumerates baseline NaConfig/NekoConfig preference keys and their old/new source locations, Ayu/ghost/download/WebProxy hooks, and hashes/layers for protocol, controllers, storage, downloads, native types and ChatActivity. Missing occurrences require review. Retained lines alone cannot establish behavior preservation; the script deliberately blocks release.
 
+Executed audit on prerequisite commit `3c43b53a5`: 325 settings, no missing baseline Ayu/ghost/download/WebProxy hook lines, layer 229. The single setting flagged for textual review is `hideAllTab`: both old `if (!NekoConfig.hideAllTab.Bool())` guards now additionally check `defaultTab != null`; manual diff review confirms the setting still suppresses the same default-tab title updates. This resolves that textual finding for this prerequisite only. Ayu implementation/NaConfig, FileLoader/FileLoadOperation/native tgnet, ghost interception/controller/storage, manifest/Firebase and launcher resource directories have no diff from the authoritative baseline. ChatActivity retains all baseline Ayu/ghost hook lines while adding upstream bot-forum/pinned/comment behavior. These observations do not validate the future full migration or runtime behavior.
+
 Preserve all baseline features. In particular:
 
 - `EnableSaveDeletedMessages`, `EnableSaveEditsHistory`, media-saving options and per-dialog exclusions: retain Ayu database schema, capture/update/delete storage/controller hooks and deleted/history ChatActivity actions and rendering.
