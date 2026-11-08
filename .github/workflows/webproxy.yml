@@ -12,8 +12,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        abi: [arm64-v8a, armeabi-v7a]
     env:
-      NATIVE_TARGET: arm64-v8a
+      NATIVE_TARGET: ${{ matrix.abi }}
       DEBUG_BUILD: 'true'
     steps:
       - uses: actions/checkout@v4
@@ -42,6 +46,6 @@ jobs:
         run: ./gradlew TMessagesProj:assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with:
-          name: NagramX-WebProxy-arm64-debug
+          name: MSNgram-${{ matrix.abi }}-debug
           path: TMessagesProj/build/outputs/apk/**/*.apk
           if-no-files-found: error
