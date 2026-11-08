@@ -81,12 +81,14 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
           python3 - <<'PY'
           import os,pathlib,zipfile
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
           badging=(p/('manifest-'+abi+'.txt')).read_text()
-          assert "package: name='com.msngram.messenger'" in badging
-          assert "application-label:'MSNgram'" in badging
+          resources=(p/('resources-'+abi+'.txt')).read_text()
+          assert "package: name='com.msngram.messenger'" in badging, 'compiled package identity missing from aapt2 badging'
+          assert 'app_name' in resources and 'MSNgram' in resources, 'compiled app_name/MSNgram resource missing'
           with zipfile.ZipFile(os.environ['APK_PATH']) as z:
               names=set(z.namelist())
           required=('mipmap-anydpi-v26/ic_launcher_msngram_blue.xml',
