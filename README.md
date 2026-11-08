@@ -7,7 +7,7 @@ MSNgram is an Android Telegram client based on [Nagram X](https://github.com/ris
 - Telegram messaging with inherited customization and privacy settings.
 - SOCKS5, MTProto and experimental WEB Proxy connections.
 - WEB Proxy import and sharing through `tg://webproxy` and `https://t.me/webproxy` links.
-- Cyan–purple ribbon M launcher icons and notification branding.
+- Cyan, blue, and teal folded-ribbon M launcher icons and notification branding.
 
 [Source](https://github.com/mbm110/MSNgram) · [Releases](https://github.com/mbm110/MSNgram/releases) · [Transport notes](WEB_PROXY_PORT.md)
 
