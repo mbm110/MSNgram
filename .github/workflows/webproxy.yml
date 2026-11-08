@@ -89,19 +89,22 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump xmltree "$APK" AndroidManifest.xml > out/manifest-tree-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
           python3 - <<'PY'
           import os,pathlib,re
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
           badging=(p/('manifest-'+abi+'.txt')).read_text()
+          manifest=(p/('manifest-tree-'+abi+'.txt')).read_text()
           resources=(p/('resources-'+abi+'.txt')).read_text()
           assert "package: name='com.msngram.messenger'" in badging, 'compiled package identity missing from aapt2 badging'
-          blocks=re.split(r'(?=resource 0x)', resources)
-          app_blocks=[b for b in blocks if 'string/AppName' in b]
-          assert app_blocks and any(re.search(r'\(string8\)\s+"MSNgram"', b) for b in app_blocks), 'compiled AppName does not resolve to MSNgram'
+          label=re.search(r'android:label\([^)]*\)=@(0x[0-9a-f]+)', manifest)
+          assert label, 'compiled manifest has no resource-backed application label'
+          label_id=label.group(1).lower()
+          assert re.search(r'(?m)^\s*resource '+re.escape(label_id)+r' com\.msngram\.messenger:string/MSNgram:', resources), (label_id, 'MSNgram resource entry missing')
           for name in ('mipmap/ic_launcher_msngram_blue','mipmap/ic_launcher_msngram'):
               assert name in resources, 'compiled icon resource missing: '+name
-          print('Package, resolved application-label and MSNgram icon resource IDs verified from APK resources.arsc')
+          print('Package, application-label resource ID and MSNgram icon resource entries verified from APK AndroidManifest.xml/resources.arsc')
           PY
           python3 scripts/check-apk-assets.py "$APK"
           python3 - "$APK" <<'PY'
