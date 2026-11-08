@@ -65,7 +65,9 @@ jobs:
           ALIAS_PASS: ${{ secrets.WEBPROXY_KEYSTORE_PASSWORD }}
           ALIAS_NAME: ${{ secrets.WEBPROXY_KEY_ALIAS }}
           LOCAL_PROPERTIES: ''
-        run: ./gradlew TMessagesProj:assembleRelease --stacktrace
+        run: |
+          ./gradlew TMessagesProj:compileReleaseKotlin TMessagesProj:compileReleaseJavaWithJavac TMessagesProj:checkReleaseDuplicateClasses --stacktrace
+          ./gradlew TMessagesProj:assembleRelease --stacktrace
       - name: Verify and stage release APK
         env:
           EXPECTED_SIGNER: 2a6ad2b3b9326cc6b0cd85063da46230ddc5587511cb978e862918384913efaa

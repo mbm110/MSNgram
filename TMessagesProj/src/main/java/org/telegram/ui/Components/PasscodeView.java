@@ -20,7 +20,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -707,7 +706,6 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         passwordFrameLayout.addView(border, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 1f / AndroidUtilities.density, Gravity.FILL_HORIZONTAL | Gravity.BOTTOM));
 
         numbersContainer = new FrameLayout(context);
-        numbersContainer.setClipChildren(false); // the outer keys' rims reach past the keypad's own bounds
         backgroundFrameLayout.addView(numbersContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         numbersFrameLayout = new FrameLayout(context) {
@@ -751,8 +749,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             ScaleStateListAnimator.apply(frameLayout, .15f, 1.5f);
             frameLayout.setTag(a);
             if (a == 11) {
-                frameLayout.setBackground(createGlass(frameLayout));
-                frameLayout.setForeground(Theme.createSimpleSelectorRoundRectDrawable(dp(30), 0, 0x26ffffff));
+                frameLayout.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(30), 0, 0x26ffffff));
                 frameLayout.setImage(R.drawable.filled_clear);
                 frameLayout.setOnLongClickListener(v -> {
                     passwordEditText.setText("");
@@ -766,8 +763,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                 setNextFocus(frameLayout, R.id.passcode_btn_0);
             } else if (a == 10) {
                 fingerprintView = frameLayout;
-                frameLayout.setBackground(createGlass(frameLayout));
-                frameLayout.setForeground(Theme.createSimpleSelectorRoundRectDrawable(dp(30), 0, 0x26ffffff));
+                frameLayout.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(30), 0, 0x26ffffff));
                 frameLayout.setContentDescription(LocaleController.getString(R.string.AccDescrFingerprint));
                 frameLayout.setImage(R.drawable.fingerprint);
                 setNextFocus(frameLayout, R.id.passcode_btn_1);
