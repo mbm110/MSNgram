@@ -84,6 +84,8 @@ android {
     defaultConfig.applicationId = APP_PACKAGE
 
     androidResources {
+        // EmojiPack maps this asset with AssetManager.openFd(), which requires ZIP_STORED.
+        noCompress 'pack'
         localeFilters += [
                 'en', 'ar', 'de', 'es', 'es-rES', 'fa-rIR', 'in-rID', 'it', 'it-rIT', 'ja-rJP',
                 'ko', 'nl', 'pl-rPL', 'pt-rBR', 'ru-rRU', 'tr-rTR', 'uk-rUA', 'vi-rVN', 'zh-rCN', 'zh-rTW'

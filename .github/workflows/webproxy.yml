@@ -94,6 +94,7 @@ jobs:
           assert 'ic_launcher_nagram' not in resources
           print('Package, provider authority, display name and MSNgram icon resources verified from APK')
           PY
+          python3 scripts/check-apk-assets.py "$APK"
           python3 - "$APK" <<'PY'
           import sys,os,zipfile,pathlib,json,hashlib
           apk=pathlib.Path(sys.argv[1]); abi=os.environ['NATIVE_TARGET']
@@ -106,13 +107,13 @@ jobs:
               assert cls in dex,cls
           badging=pathlib.Path('out/manifest-'+abi+'.txt').read_text()
           assert "name='com.msngram.messenger'" in badging
-          assert "versionName='13.1.1-msngram.1'" in badging and "versionCode='1264'" in badging
+          assert "versionName='13.1.1-msngram.2'" in badging and "versionCode='1265'" in badging
           assert "sdkVersion:'27'" in badging
           assert 'application-debuggable' not in badging
-          name='MSNgram-v13.1.1-msngram.1(1264)-'+abi+'.apk'
+          name='MSNgram-v13.1.1-msngram.2(1265)-'+abi+'.apk'
           target=pathlib.Path('out')/name
           target.write_bytes(apk.read_bytes())
-          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'13.1.1-msngram.1','versionCode':1264,'minSdk':27}
+          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'13.1.1-msngram.2','versionCode':1265,'minSdk':27}
           pathlib.Path('out/verification-'+abi+'.json').write_text(json.dumps(evidence,indent=2))
           print(json.dumps(evidence))
           PY
