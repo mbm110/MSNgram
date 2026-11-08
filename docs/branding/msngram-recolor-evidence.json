@@ -1,0 +1,1152 @@
+[
+  {
+    "path": "TMessagesProj/src/main/msngram-playstore.png",
+    "size": [
+      512,
+      512
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "8fb0b12051b88e6ddcc0ed57c956a5d626b9e8dd6a6c1fcb0398c48e8c6da7d5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-hdpi/msngram_icon_foreground.png",
+    "size": [
+      162,
+      162
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "d800508e7aa9cfcee746769f4217271baadca859714b558f3626c22db866689f"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-hdpi/msngram_icon_monochrome.png",
+    "size": [
+      162,
+      162
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "0e9ce90a045f007ee3d78a775ad2074d4e25296f99ed3ee77950133e3a1a7eab"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-hdpi/msngram_notification.png",
+    "size": [
+      36,
+      36
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3e222b216e9ef2dfd492cd0da90c033115625f5077d8caf3ec801e2bf3c6fd2f"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-hdpi/msngram_x_notification.png",
+    "size": [
+      36,
+      36
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3e222b216e9ef2dfd492cd0da90c033115625f5077d8caf3ec801e2bf3c6fd2f"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-mdpi/msngram_icon_foreground.png",
+    "size": [
+      108,
+      108
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "5779bede6b6f4882738786b40b52c707db2fb376150636f3cf89a69375130e3d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-mdpi/msngram_icon_monochrome.png",
+    "size": [
+      108,
+      108
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "89c59cf4b511d90827551a55993d47c62721c9fe303943e6e15a483c7ef88305"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-mdpi/msngram_notification.png",
+    "size": [
+      24,
+      24
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "08664a4e51a06c517d72ac52bca5f08b46c7c1ae902d3cd58d2070426d0a2de7"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-mdpi/msngram_x_notification.png",
+    "size": [
+      24,
+      24
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "08664a4e51a06c517d72ac52bca5f08b46c7c1ae902d3cd58d2070426d0a2de7"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xhdpi/msngram_icon_foreground.png",
+    "size": [
+      216,
+      216
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "10445082e7ec6800ee0eebc95fecb5526ed91a2686eb86f531cc4199262881a0"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xhdpi/msngram_icon_monochrome.png",
+    "size": [
+      216,
+      216
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "8885fc67d54cf927ab1be5a19bb713a5c80338bbf1f8517ac9c12d0d646bef33"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xhdpi/msngram_notification.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3e0896851aba6f029f94f024755d27f4b8a480f80cc9500ae59da074d5826b79"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xhdpi/msngram_x_notification.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3e0896851aba6f029f94f024755d27f4b8a480f80cc9500ae59da074d5826b79"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xxhdpi/msngram_icon_foreground.png",
+    "size": [
+      324,
+      324
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3f086f515a1db3c087218a4938e9e09ec7ea09891b2e3875c888c55ed0f7791d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xxhdpi/msngram_icon_monochrome.png",
+    "size": [
+      324,
+      324
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "8abbdb864e47e1c1a53c0bd8d0cc7fe5b93a75233c330a9a3aa5a89d0f68d99d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xxhdpi/msngram_notification.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "4142a34bcd9b9ab8c30b9320f2265265b2a7616f9f6ac56304ea889a5e8ad294"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xxhdpi/msngram_x_notification.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "4142a34bcd9b9ab8c30b9320f2265265b2a7616f9f6ac56304ea889a5e8ad294"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xxxhdpi/msngram_icon_foreground.png",
+    "size": [
+      432,
+      432
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "fa0a8da243fd32e17de81e86a09961ba2a184e777bc2e7881d80c401eac8c50b"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/drawable-xxxhdpi/msngram_icon_monochrome.png",
+    "size": [
+      432,
+      432
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "0e919504ac9089067ea18184e248ac8478ffdf473dccbcaecfadfdf0154e77ed"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_blue.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_blue_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_blur_blue.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_blur_blue_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_colorful.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_colorful_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_dark_blue.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_dark_blue_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_darkgreen.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_darkgreen_foreground.png",
+    "size": [
+      162,
+      162
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "d800508e7aa9cfcee746769f4217271baadca859714b558f3626c22db866689f"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_darkgreen_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_google.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_google_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_neon.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_neon_foreground.png",
+    "size": [
+      162,
+      162
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "d800508e7aa9cfcee746769f4217271baadca859714b558f3626c22db866689f"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_neon_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_round_niello.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "af6d0d74a688cc2beb761ab2819824d18fc35d84a15fc16f97a41019c61a1c0e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-hdpi/ic_launcher_msngram_round_niello_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "37ebe4413d2b39dfb98da7f352878d813e34ba6c3afcecaa42b8bba0ebea738e"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_blue.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_blue_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_blur_blue.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_blur_blue_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_colorful.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_colorful_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_dark_blue.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_dark_blue_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_darkgreen.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_darkgreen_foreground.png",
+    "size": [
+      108,
+      108
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "5779bede6b6f4882738786b40b52c707db2fb376150636f3cf89a69375130e3d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_darkgreen_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_google.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_google_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_neon.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_neon_foreground.png",
+    "size": [
+      108,
+      108
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "5779bede6b6f4882738786b40b52c707db2fb376150636f3cf89a69375130e3d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_neon_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_round_niello.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "32887e8c4db1592b7ff424e0aeb5c6a8c706801f96af425eb6b203c7317d89f5"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-mdpi/ic_launcher_msngram_round_niello_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "28988a882aa20c4d26fed138de7ac93bbca61bce1d8fafa44aaecb9b46bc625a"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_blue.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_blue_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_blur_blue.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_blur_blue_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_colorful.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_colorful_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_dark_blue.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_dark_blue_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_darkgreen.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_darkgreen_foreground.png",
+    "size": [
+      216,
+      216
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "10445082e7ec6800ee0eebc95fecb5526ed91a2686eb86f531cc4199262881a0"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_darkgreen_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_google.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_google_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_neon.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_neon_foreground.png",
+    "size": [
+      216,
+      216
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "10445082e7ec6800ee0eebc95fecb5526ed91a2686eb86f531cc4199262881a0"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_neon_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_round_niello.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "609d287ffc85c641d2bcfc58b49980e8189626a985ef3b500ff85a68ed347048"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xhdpi/ic_launcher_msngram_round_niello_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "c5023e49f790dff146fca3f8480fd3804590397bee8dd8e12d9b902a41c14165"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_blue.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_blue_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_blur_blue.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_blur_blue_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_colorful.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_colorful_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_dark_blue.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_dark_blue_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_darkgreen.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_darkgreen_foreground.png",
+    "size": [
+      324,
+      324
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3f086f515a1db3c087218a4938e9e09ec7ea09891b2e3875c888c55ed0f7791d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_darkgreen_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_google.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_google_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_neon.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_neon_foreground.png",
+    "size": [
+      324,
+      324
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3f086f515a1db3c087218a4938e9e09ec7ea09891b2e3875c888c55ed0f7791d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_neon_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_round_niello.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "e7b002551d0ae36e5a359555bd2caeef83f789122917deb376364a5b1875c632"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxhdpi/ic_launcher_msngram_round_niello_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "3c5763bbab2b6d9c127809d9f6a59460820ca4522a3e4e422044bb13a0afc4a2"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_blue.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_blue_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_blur_blue.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_blur_blue_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_colorful.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_colorful_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_dark_blue.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_dark_blue_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_darkgreen.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_darkgreen_foreground.png",
+    "size": [
+      432,
+      432
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "fa0a8da243fd32e17de81e86a09961ba2a184e777bc2e7881d80c401eac8c50b"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_darkgreen_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_google.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_google_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_neon.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_neon_foreground.png",
+    "size": [
+      432,
+      432
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "fa0a8da243fd32e17de81e86a09961ba2a184e777bc2e7881d80c401eac8c50b"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_neon_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_round_niello.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "f62bff7a5990a7e7c70e30b58cd13795f33839a055473af353762b3eff59ca0d"
+  },
+  {
+    "path": "TMessagesProj/src/main/res/mipmap-xxxhdpi/ic_launcher_msngram_round_niello_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "9e60038aa862183015fd990b51cd01f7e6f2d215e8abce4c67f3cbece2f967fa"
+  },
+  {
+    "path": "docs/branding/MSNgram.png",
+    "size": [
+      1024,
+      1024
+    ],
+    "changed": 0,
+    "purple_before": 0,
+    "sha256": "5db161c717321b5a53f9a0ce8526304047a64c2438a78b37f78c0fab9217375d"
+  }
+]
