@@ -80,16 +80,15 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump xmltree "$APK" AndroidManifest.xml > out/manifest-tree-${NATIVE_TARGET}.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump resources "$APK" > out/resources-${NATIVE_TARGET}.txt
           python3 - <<'PY'
           import os,pathlib
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
-          manifest=(p/('manifest-tree-'+abi+'.txt')).read_text()
-          assert 'com.msngram.messenger.' in manifest
-          assert 'nu.gpu.nagram.provider' not in manifest
-          assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in manifest
-          assert "application-label:'MSNgram'" in (p/('manifest-'+abi+'.txt')).read_text()
+          badging=(p/('manifest-'+abi+'.txt')).read_text()
+          assert "package: name='com.msngram.messenger'" in badging
+          assert 'nu.gpu.nagram.provider' not in badging
+          assert 'nu.gpu.nagram.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION' not in badging
+          assert "application-label:'MSNgram'" in badging
           resources=(p/('resources-'+abi+'.txt')).read_text()
           for name in ('ic_launcher_msngram_blue','msngram_icon_foreground','msngram_icon_monochrome','msngram_notification'):
               assert name in resources,name
