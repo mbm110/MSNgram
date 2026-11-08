@@ -80,7 +80,7 @@ jobs:
           test "$(printf '%s\n' "$APK" | wc -l)" -eq 1
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$APK" | tee out/signature-${NATIVE_TARGET}.txt
           grep -q "$EXPECTED_SIGNER" out/signature-${NATIVE_TARGET}.txt
-          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$APK" > out/manifest-${NATIVE_TARGET}.txt
           python3 - <<'PY'
           import os,pathlib,zipfile
           abi=os.environ['NATIVE_TARGET']; p=pathlib.Path('out')
