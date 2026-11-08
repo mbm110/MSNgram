@@ -47,6 +47,9 @@ public class FileLoadOperation {
     public static volatile DispatchQueue filesQueue = new DispatchQueue("writeFileQueue");
     public static ImmutableByteArrayOutputStream filesQueueByteBuffer;
     private boolean forceSmallChunk;
+    // Keep the per-operation budget state used by updateDownloadByteBudget().
+    private boolean useDownloadByteBudget;
+    private int downloadConnectionsCount = 2;
     private Runnable fileWriteRunnable;
     public boolean isStory;
 
