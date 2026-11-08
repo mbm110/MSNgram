@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 36
+
+    defaultConfig {
+        // API-Version . minor
+        minSdkVersion 23
+        targetSdkVersion 36
+    }
+
+    lint {
+        abortOnError false
+    }
+    namespace 'org.openintents.openpgp'
+    buildFeatures {
+        aidl true
+        buildConfig true
+    }
+}
