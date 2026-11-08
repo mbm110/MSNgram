@@ -44,6 +44,7 @@ jobs:
           for module in Path('TMessagesProj_Modules/media/libraries').glob('*/build.gradle'):
               text = module.read_text()
               text = text.replace("apply plugin: 'kotlin-android'", "// Kotlin is provided by the Android Gradle plugin.")
+              text = __import__('re').sub(r'\n    kotlinOptions \{\n        jvmTarget = \'1\.8\'\n    \}\n', '\n', text)
               module.write_text(text)
           PY
       - name: Build APK
