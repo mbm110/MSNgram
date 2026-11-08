@@ -42,6 +42,7 @@ def sources(ref):
     listing = git('ls-tree', '-r', ref, 'TMessagesProj/src/main', 'TMessagesProj/jni/tgnet').decode().splitlines()
     # One persistent object reader avoids thousands of git process launches.
     with subprocess.Popen(['git', 'cat-file', '--batch'], stdin=subprocess.PIPE, stdout=subprocess.PIPE) as reader:
+        assert reader.stdin is not None and reader.stdout is not None
         try:
             for entry in listing:
                 metadata, path = entry.split('\t', 1)
