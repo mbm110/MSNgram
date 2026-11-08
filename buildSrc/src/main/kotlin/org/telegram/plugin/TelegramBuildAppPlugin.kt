@@ -24,17 +24,19 @@ class TelegramBuildAppPlugin : Plugin<Project> {
             val task = project.tasks.register<TelegramStringsTask>(
                 "generate${suffix}TelegramStrings"
             ) {
+                // The generated namespace must include every string resource file.
+                // Custom MSNgram/Neko settings live in strings_na*.xml and are
+                // resolved through the same R.string -> hash binding as Telegram
+                // strings. Omitting them produces LOC_ERR for every custom label.
                 stringsXml.from(
                     telegramModule.fileTree("src/main/res/values") {
-                        include("strings.xml")
-
+                        include("strings*.xml")
                     }
                 )
 
                 localizationFiles.from(
                     telegramModule.fileTree("src/main/res") {
-                        include("values-*/strings.xml")
-
+                        include("values-*/strings*.xml")
                     }
                 )
 
