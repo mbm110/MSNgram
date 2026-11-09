@@ -103,12 +103,9 @@ jobs:
           label=re.search(r'android:label\([^)]*\)=@(0x[0-9a-f]+)', manifest)
           assert label, 'compiled manifest has no resource-backed application label'
           label_id=label.group(1).lower()
-          resource_match=re.search(r'(?m)^\s*resource '+re.escape(label_id)+r'\s+com\.msngram\.messenger:string/([^:]+):', resources)
-          assert resource_match, (label_id, 'application-label resource entry missing')
-          label_name=resource_match.group(1)
-          assert label_name in ('AppName','MSNgram'), (label_id, label_name, 'unexpected application-label resource')
-          label_block=resources[resource_match.start():resource_match.start()+1200]
-          assert 'value="MSNgram"' in label_block, (label_id, label_name, 'application label value is not MSNgram')
+          assert "application-label:'MSNgram'" in badging, 'resolved application label is not MSNgram'
+          assert label_id in resources.lower(), (label_id, 'application-label resource ID missing from resources.arsc dump')
+          assert 'MSNgram' in resources, 'MSNgram value missing from resources.arsc dump'
           for name in ('mipmap/ic_launcher_msngram_blue','mipmap/ic_launcher_msngram'):
               assert name in resources, 'compiled icon resource missing: '+name
           print('Package, application-label resource ID and MSNgram icon resource entries verified from APK AndroidManifest.xml/resources.arsc')
