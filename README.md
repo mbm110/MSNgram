@@ -2,10 +2,10 @@
 
 <p align="center"><img src="docs/branding/MSNgram.png" width="192" alt="MSNgram ribbon M icon"></p>
 
-MSNgram is an Android Telegram client based on [Nagram X](https://github.com/risin42/NagramX), with the experimental WEB Proxy transport ported from [Nagram](https://github.com/NextAlone/Nagram).
+MSNgram is an Android Telegram client based on [Nagram X](https://github.com/risin42/NagramX), with the WEB Proxy transport ported from [Nagram](https://github.com/NextAlone/Nagram).
 
 - Telegram messaging with inherited customization and privacy settings.
-- SOCKS5, MTProto and experimental WEB Proxy connections.
+- SOCKS5, MTProto and WEB Proxy connections.
 - WEB Proxy import and sharing through `tg://webproxy` and `https://t.me/webproxy` links.
 - Cyan, blue, and teal folded-ribbon M launcher icons and notification branding.
 
@@ -13,7 +13,7 @@ MSNgram is an Android Telegram client based on [Nagram X](https://github.com/ris
 
 ## Installation identity
 
-MSNgram uses the application ID `com.msngram.messenger`, version `12.10.0-msngram.1` (1263). It installs separately from the earlier WebProxy build; accounts must be signed in again. Future MSNgram builds retain this package and signing key. The release signing certificate SHA-256 is:
+MSNgram uses the application ID `com.msngram.messenger`, version `13.1.2` (1270). It retains the package and signing key used by the previous MSNgram release, so compatible updates can be installed without removing the existing app. The release signing certificate SHA-256 is:
 
 ```text
 2A:6A:D2:B3:B9:32:6C:C6:B0:CD:85:06:3D:A4:62:30:DD:C5:58:75:11:CB:97:8E:86:29:18:38:49:13:EF:AA
@@ -25,7 +25,7 @@ Existing release APKs retain their original names and contents. This source rebr
 
 Open Settings → Data and Storage → Proxy Settings → Add Proxy → WEB Proxy. Supply a compatible WEB Proxy server and its 16-byte MTProxy secret. Ordinary HTTP or SOCKS servers do not provide this transport.
 
-A recent Android System WebView is required. This experimental transport needs real-device foreground/background and connection testing; see [WEB_PROXY_PORT.md](WEB_PROXY_PORT.md).
+A recent Android System WebView is required for WEB Proxy connections; see [WEB_PROXY_PORT.md](WEB_PROXY_PORT.md).
 
 ## Development
 
