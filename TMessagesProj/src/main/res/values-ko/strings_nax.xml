@@ -109,7 +109,7 @@
     <string name="Other">기타</string>
     <string name="RestartApp">앱 다시 시작</string>
     <string name="ResetSettings">설정 초기화</string>
-    <string name="ResetSettingsAlert">모든 N-Settings를 초기화하시겠습니까?</string>
+    <string name="ResetSettingsAlert">모든 MSN-Setting를 초기화하시겠습니까?</string>
     <string name="DontAutoPlayNextVoice">다음 음성 메시지 자동 재생 안 함</string>
     <string name="SaveToChatSubfolder">채팅 이름별로 첨부 파일 저장</string>
     <string name="MessageColoredBackground">다채로운 메시지 배경</string>

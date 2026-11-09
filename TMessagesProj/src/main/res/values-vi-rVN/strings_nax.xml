@@ -101,7 +101,7 @@
     <string name="Other">Khác</string>
     <string name="RestartApp">Khởi động lại ứng dụng</string>
     <string name="ResetSettings">Đặt lại cài đặt</string>
-    <string name="ResetSettingsAlert">Bạn có chắc chắn muốn đặt lại tất cả cài đặt N-Settings không?</string>
+    <string name="ResetSettingsAlert">Bạn có chắc chắn muốn đặt lại tất cả cài đặt MSN-Setting không?</string>
     <string name="DontAutoPlayNextVoice">Không tự động phát tin nhắn thoại tiếp theo</string>
     <string name="SaveToChatSubfolder">Lưu tệp đính kèm theo tên đoạn chat</string>
     <string name="MessageColoredBackground">Nền tin nhắn nhiều màu</string>

@@ -34,21 +34,21 @@ public class LauncherIconController {
     }
 
     public enum LauncherIcon {
-        DEFAULT("DefaultIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconDefault),
-        GOOGLE("GoogleIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconGoogle),
-        COLORFUL("ColorfulIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconColorful),
-        DARKGREEN("DarkGreenIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconDarkGreen),
-        NEON("NeonIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconNeon),
-        NIELLO("NielloIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconNiello),
-        BLUE("BlueIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconBlue),
-        DARKBLUE("DarkBlueIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconDarkBlue),
-        BLURBLUE("BlurBlueIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconBlurBlue),
-        TELEGRAM("TelegramIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconTelegramOriginal),
-        VINTAGE("VintageIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconVintage),
-        AQUA("AquaIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconAqua),
-        PREMIUM("PremiumIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconPremium),
-        TURBO("TurboIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconTurbo),
-        NOX("NoxIcon", R.drawable.msngram_icon_background, R.drawable.msngram_icon_foreground, R.string.AppIconNox);
+        DEFAULT("DefaultIcon", R.drawable.msngram_default_background, R.drawable.msngram_default_foreground, R.string.AppIconDefault),
+        GOOGLE("GoogleIcon", R.drawable.msngram_google_background, R.drawable.msngram_google_foreground, R.string.AppIconGoogle),
+        COLORFUL("ColorfulIcon", R.drawable.msngram_colorful_background, R.drawable.msngram_colorful_foreground, R.string.AppIconColorful),
+        DARKGREEN("DarkGreenIcon", R.drawable.msngram_darkgreen_background, R.drawable.msngram_darkgreen_foreground, R.string.AppIconDarkGreen),
+        NEON("NeonIcon", R.drawable.msngram_neon_background, R.drawable.msngram_neon_foreground, R.string.AppIconNeon),
+        NIELLO("NielloIcon", R.drawable.msngram_niello_background, R.drawable.msngram_niello_foreground, R.string.AppIconNiello),
+        BLUE("BlueIcon", R.drawable.msngram_blue_background, R.drawable.msngram_blue_foreground, R.string.AppIconBlue),
+        DARKBLUE("DarkBlueIcon", R.drawable.msngram_darkblue_background, R.drawable.msngram_darkblue_foreground, R.string.AppIconDarkBlue),
+        BLURBLUE("BlurBlueIcon", R.drawable.msngram_blurblue_background, R.drawable.msngram_blurblue_foreground, R.string.AppIconBlurBlue),
+        TELEGRAM("TelegramIcon", R.drawable.msngram_telegram_background, R.drawable.msngram_telegram_foreground, R.string.AppIconTelegramOriginal),
+        VINTAGE("VintageIcon", R.drawable.msngram_vintage_background, R.drawable.msngram_vintage_foreground, R.string.AppIconVintage),
+        AQUA("AquaIcon", R.drawable.msngram_aqua_background, R.drawable.msngram_aqua_foreground, R.string.AppIconAqua),
+        PREMIUM("PremiumIcon", R.drawable.msngram_premium_background, R.drawable.msngram_premium_foreground, R.string.AppIconPremium),
+        TURBO("TurboIcon", R.drawable.msngram_turbo_background, R.drawable.msngram_turbo_foreground, R.string.AppIconTurbo),
+        NOX("NoxIcon", R.drawable.msngram_nox_background, R.drawable.msngram_nox_foreground, R.string.AppIconNox);
 
         public final String key;
         public final int background;
@@ -78,7 +78,8 @@ public class LauncherIconController {
         }
 
         public boolean isNekoX() {
-            return this == DEFAULT;
+            // Every MSNgram choice uses an adaptive background and folded-M layer.
+            return false;
         }
     }
 }

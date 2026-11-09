@@ -335,15 +335,28 @@ public class AppIconsSelectorCell extends RecyclerListView implements Notificati
         public void draw(Canvas canvas) {
             canvas.save();
             canvas.clipPath(path);
-            if (!this.isNekoXIcon)
-                canvas.scale(1f + backgroundOuterPadding / (float) getWidth(), 1f + backgroundOuterPadding / (float) getHeight(), getWidth() / 2f, getHeight() / 2f);
-            super.draw(canvas);
-            canvas.restore();
-
-            if (foreground != null && !this.isNekoXIcon) {
-                foreground.setBounds(-outerPadding, -outerPadding, getWidth() + outerPadding, getHeight() + outerPadding);
+            // Adaptive layers are 108dp; launchers expose the central 72dp.
+            // Render the same crop inside the selector's circular mask.
+            float visibleSize = Math.min(getWidth() - getPaddingLeft() - getPaddingRight(),
+                    getHeight() - getPaddingTop() - getPaddingBottom());
+            int halfLayer = Math.round(visibleSize * 0.75f);
+            int centerX = getWidth() / 2;
+            int centerY = getHeight() / 2;
+            Drawable background = getDrawable();
+            if (background == null) {
+                background = getBackground();
+            }
+            if (background != null) {
+                background.setBounds(centerX - halfLayer, centerY - halfLayer,
+                        centerX + halfLayer, centerY + halfLayer);
+                background.draw(canvas);
+            }
+            if (foreground != null) {
+                foreground.setBounds(centerX - halfLayer, centerY - halfLayer,
+                        centerX + halfLayer, centerY + halfLayer);
                 foreground.draw(canvas);
             }
+            canvas.restore();
         }
 
         private void updatePath() {

@@ -126,14 +126,17 @@ jobs:
               assert cls in dex,cls
           badging=pathlib.Path('out/manifest-'+abi+'.txt').read_text()
           assert "name='com.msngram.messenger'" in badging
-          assert "versionName='13.1.1-msngram.5'" in badging and "versionCode='1268'" in badging
+          properties = dict(line.split('=', 1) for line in pathlib.Path('gradle.properties').read_text().splitlines() if '=' in line and not line.lstrip().startswith('#'))
+          version = properties['APP_VERSION_NAME']
+          version_code = int(properties['APP_VERSION_CODE'])
+          assert f"versionName='{version}'" in badging and f"versionCode='{version_code}'" in badging
           sdk_match=re.search(r"minSdkVersion:\s*'?([0-9]+)'?", badging)
           assert sdk_match and sdk_match.group(1) == '27', ('unexpected minSdk in aapt2 badging', badging)
           assert 'application-debuggable' not in badging
-          name='MSNgram-v13.1.1-msngram.5-'+abi+'.apk'
+          name=f'MSNgram-v{version}-{abi}.apk'
           target=pathlib.Path('out')/name
           target.write_bytes(apk.read_bytes())
-          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':'13.1.1-msngram.5','versionCode':1268,'minSdk':27}
+          evidence={'sha':os.environ['GITHUB_SHA'],'abi':abi,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'size':target.stat().st_size,'libs':libs,'webproxy_classes':True,'package':'com.msngram.messenger','versionName':version,'versionCode':version_code,'minSdk':27}
           pathlib.Path('out/verification-'+abi+'.json').write_text(json.dumps(evidence,indent=2))
           print(json.dumps(evidence))
           PY
