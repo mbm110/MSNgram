@@ -124,7 +124,8 @@ jobs:
           badging=pathlib.Path('out/manifest-'+abi+'.txt').read_text()
           assert "name='com.msngram.messenger'" in badging
           assert "versionName='13.1.1-msngram.4'" in badging and "versionCode='1267'" in badging
-          assert "sdkVersion:'27'" in badging
+          sdk_match=re.search(r"sdkVersion:\s*'?([0-9]+)'?", badging)
+          assert sdk_match and sdk_match.group(1) == '27', ('unexpected minSdk in aapt2 badging', badging)
           assert 'application-debuggable' not in badging
           name='MSNgram-v13.1.1-msngram.4-'+abi+'.apk'
           target=pathlib.Path('out')/name
