@@ -79,6 +79,15 @@ abstract class GenerateLocalizationUtilsJavaTask : DefaultTask() {
                     java.append("\": return \"")
                     java.append(getLocalizationAssetName(tag))
                     java.appendLine("\";")
+                    if (tag.startsWith("in-")) {
+                        java.appendLine("            case \"id-${tag.substring(3)}\": return \"${getLocalizationAssetName(tag)}\";")
+                    }
+                }
+
+                val legacyIndonesianTag = languageTags.firstOrNull { it == "in" }
+                    ?: languageTags.firstOrNull { it.startsWith("in-") }
+                if (legacyIndonesianTag != null) {
+                    java.appendLine("            case \"id\": return \"${getLocalizationAssetName(legacyIndonesianTag)}\";")
                 }
 
                 java.appendLine("        }")
@@ -95,6 +104,13 @@ abstract class GenerateLocalizationUtilsJavaTask : DefaultTask() {
                         java.append(getLocalizationAssetName(tag))
                         java.appendLine("\";")
                     }
+                }
+                if (legacyIndonesianTag != null) {
+                    // Android releases may expose the legacy language code through getLanguage().
+                    if (legacyIndonesianTag != "in") {
+                        java.appendLine("            case \"in\":")
+                    }
+                    java.appendLine("            case \"id\": return \"${getLocalizationAssetName(legacyIndonesianTag)}\";")
                 }
 
                 java.appendLine("            default: return null;")
