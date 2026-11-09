@@ -3,7 +3,9 @@ name: MSNgram Release APKs
 on:
   workflow_dispatch:
   push:
-    branches: [dev]
+    branches:
+      - dev
+      - migrate/msngram-full-13.1.1
 
 permissions:
   contents: read
