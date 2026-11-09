@@ -112,7 +112,7 @@ jobs:
           PY
           python3 scripts/check-apk-assets.py "$APK"
           python3 - "$APK" <<'PY'
-          import sys,os,zipfile,pathlib,json,hashlib
+          import sys,os,zipfile,pathlib,json,hashlib,re
           apk=pathlib.Path(sys.argv[1]); abi=os.environ['NATIVE_TARGET']
           z=zipfile.ZipFile(apk)
           libs=[n for n in z.namelist() if n.startswith('lib/') and n.endswith('.so')]
